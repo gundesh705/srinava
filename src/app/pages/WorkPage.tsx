@@ -167,7 +167,7 @@ export function WorkPage() {
           {machines.map((m, i) => (
             <motion.div
               key={m.name}
-              className="group relative rounded-2xl border border-white/8 bg-white/4 p-6 hover:border-white/20 hover:bg-white/7 transition-all duration-300 cursor-pointer overflow-hidden"
+              className="group relative border border-white/8 bg-white/4 p-6 hover:border-white/20 hover:bg-white/7 transition-all duration-300 cursor-pointer overflow-hidden"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
