@@ -375,6 +375,48 @@ export function FacilitiesPage() {
         </>
       )}
 
+      {/* Fabrication Showcase Section */}
+      <div className="px-8 md:px-16 lg:px-24 py-20">
+        <motion.div
+          className="mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-8 h-px bg-white/40" />
+            <span className="text-white/40 uppercase" style={{ fontSize: "0.7rem", letterSpacing: "0.25em", fontWeight: 500 }}>
+              Our Capabilities
+            </span>
+          </div>
+          <h2
+            className="text-white mb-8"
+            style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.1 }}
+          >
+            Fabrication Showcase
+          </h2>
+          <p className="text-white/60 max-w-2xl" style={{ fontSize: "1.05rem", lineHeight: 1.8 }}>
+            Discover the excellence and precision that define our fabrication services. From concept to completion, we deliver unmatched quality and innovation in every project.
+          </p>
+        </motion.div>
+
+        <motion.div
+          className="text-center mt-12"
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="px-10 py-4 border border-white/20 text-white/70 hover:border-white/50 hover:text-white transition-all duration-300 hover:scale-105 cursor-pointer bg-transparent rounded-full"
+            style={{ fontSize: "0.85rem", letterSpacing: "0.06em", fontWeight: 500 }}
+          >
+            Explore Fabrication Showcase
+          </button>
+        </motion.div>
+      </div>
 
     </div>
   );
