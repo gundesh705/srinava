@@ -188,10 +188,6 @@ export function WorkPage() {
                 {m.name}
               </h3>
 
-              <p className="text-white/35 group-hover:text-white/50 transition-colors duration-300" style={{ fontSize: "0.78rem", lineHeight: 1.65 }}>
-                {m.desc}
-              </p>
-
               {/* Bottom accent line */}
               <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </motion.div>
