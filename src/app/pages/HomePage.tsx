@@ -1,12 +1,14 @@
 import { useNavigate } from "react-router";
 import { motion } from "motion/react";
 import bgVideo from "../../imports/make_this_animated__like_a_ovi.mp4";
+import { Navigation } from "../components/Navigation";
 
 export function HomePage() {
   const navigate = useNavigate();
 
   return (
     <section className="relative w-full h-screen overflow-hidden">
+      <Navigation />
       <video
         className="absolute inset-0 w-full h-full object-cover"
         src={bgVideo}
@@ -17,33 +19,6 @@ export function HomePage() {
       />
       <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/75" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent" />
-
-      {/* Nav */}
-      <motion.nav
-        className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-8 py-6"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
-        <span
-          className="text-white uppercase"
-          style={{ fontSize: "0.85rem", letterSpacing: "0.2em" }}
-        >
-          OVISION
-        </span>
-        <div className="flex items-center gap-8">
-          {["Work", "About", "Contact"].map((item) => (
-            <button
-              key={item}
-              onClick={() => item === "Work" && navigate("/work")}
-              className="text-white/70 hover:text-white transition-colors duration-200 bg-transparent border-none cursor-pointer"
-              style={{ fontSize: "0.8rem", letterSpacing: "0.1em" }}
-            >
-              {item}
-            </button>
-          ))}
-        </div>
-      </motion.nav>
 
       {/* Content */}
       <div className="relative z-10 flex flex-col justify-center h-full px-8 md:px-16 lg:px-24 max-w-5xl">

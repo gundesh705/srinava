@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router";
 import { motion } from "motion/react";
 import headerImg from "../../imports/wmremove-transformed.png";
+import { Navigation } from "../components/Navigation";
 import img1 from "../../imports/WhatsApp_Image_2026-06-21_at_10.21.12.jpeg";
 import img2 from "../../imports/sgsfbr.jpeg";
 import img3 from "../../imports/WhatsApp_Image_2026-06-21_at_10.19.35.jpeg";
