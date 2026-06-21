@@ -12,6 +12,8 @@ const machines = [
     name: "Laser Cutting",
     icon: "◈",
     desc: "Precision cuts up to 25mm thick steel with ±0.1mm tolerance.",
+    img: img1,
+    more: "Our 3 kW CNC Fiber Laser Cutting Machine delivers high-speed, high-precision sheet metal processing using premium components from RayTools, HIWIN, THK, SMC, Schneider Electric, and ABB. With positioning accuracy of ±0.05 mm and the capability to cut mild steel up to 20 mm thickness, the machine ensures superior quality, repeatability, and productivity for industrial fabrication requirements.",
   },
   {
     name: "Machinaries",
@@ -167,29 +169,61 @@ export function WorkPage() {
           {machines.map((m, i) => (
             <motion.div
               key={m.name}
-              className="group relative rounded-2xl border border-white/8 bg-white/4 p-6 hover:border-white/20 hover:bg-white/7 transition-all duration-300 cursor-default overflow-hidden"
+              className="group relative rounded-2xl border border-white/8 bg-white/4 p-6 hover:border-white/20 hover:bg-white/7 transition-all duration-300 cursor-pointer overflow-hidden"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              onClick={() => setExpanded(expanded === i ? null : i)}
             >
-              <div
-                className="text-white/20 mb-5 group-hover:text-white/40 transition-colors duration-300"
-                style={{ fontSize: "1.6rem" }}
-              >
-                {m.icon}
-              </div>
+              {expanded === i && m.img && (
+                <>
+                  <div className="relative overflow-hidden mb-4" style={{ aspectRatio: "16/10" }}>
+                    <img
+                      src={m.img}
+                      alt={m.name}
+                      className="w-full h-full object-cover rounded-lg"
+                    />
+                  </div>
+                  <AnimatePresence>
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                      className="overflow-hidden"
+                    >
+                      <div className="border-t border-white/10 pt-4">
+                        <p className="text-white/35" style={{ fontSize: "0.85rem", lineHeight: 1.75 }}>
+                          {m.more}
+                        </p>
+                      </div>
+                    </motion.div>
+                  </AnimatePresence>
+                </>
+              )}
 
-              <h3
-                className="text-white mb-2"
-                style={{ fontSize: "0.95rem", fontWeight: 600, letterSpacing: "-0.01em" }}
-              >
-                {m.name}
-              </h3>
+              {expanded !== i && (
+                <>
+                  <div
+                    className="text-white/20 mb-5 group-hover:text-white/40 transition-colors duration-300"
+                    style={{ fontSize: "1.6rem" }}
+                  >
+                    {m.icon}
+                  </div>
 
-              <p className="text-white/35 group-hover:text-white/50 transition-colors duration-300" style={{ fontSize: "0.78rem", lineHeight: 1.65 }}>
-                {m.desc}
-              </p>
+                  <h3
+                    className="text-white mb-2"
+                    style={{ fontSize: "0.95rem", fontWeight: 600, letterSpacing: "-0.01em" }}
+                  >
+                    {m.name}
+                  </h3>
+
+                  <p className="text-white/35 group-hover:text-white/50 transition-colors duration-300" style={{ fontSize: "0.78rem", lineHeight: 1.65 }}>
+                    {m.desc}
+                  </p>
+                </>
+              )}
 
               {/* Bottom accent line */}
               <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
