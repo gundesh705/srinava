@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { useNavigate } from "react-router";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import headerImg from "../../imports/wmremove-transformed.png";
 import img1 from "../../imports/WhatsApp_Image_2026-06-21_at_10.21.12.jpeg";
 import img2 from "../../imports/sgsfbr.jpeg";
@@ -12,9 +11,11 @@ const machines = [
     name: "Laser Cutting",
     icon: "◈",
     desc: "Precision cuts up to 25mm thick steel with ±0.1mm tolerance.",
+    img: img1,
+    more: "Our 3 kW CNC Fiber Laser Cutting Machine delivers high-speed, high-precision sheet metal processing using premium components from RayTools, HIWIN, THK, SMC, Schneider Electric, and ABB. With positioning accuracy of ±0.05 mm and the capability to cut mild steel up to 20 mm thickness, the machine ensures superior quality, repeatability, and productivity for industrial fabrication requirements.",
   },
   {
-    name: "Bending Machine",
+    name: "Machinaries",
     icon: "⌒",
     desc: "CNC press brake for complex profiles and high-volume bends.",
   },
@@ -24,52 +25,22 @@ const machines = [
     desc: "20-tonne overhead crane for safe heavy-load handling.",
   },
   {
-    name: "Flange Rolling",
-    icon: "◎",
-    desc: "Custom flange rolling for pipes, vessels, and structural rings.",
+    name: "Welding",
+    icon: "⚡",
+    desc: "Advanced welding systems for structural steel and precision joints.",
   },
 ];
 
-const facilities = [
-  {
-    img: img1,
-    title: "Production Studio",
-    tag: "Creative Hub",
-    desc: "Our flagship production studio is equipped with industry-leading tools and technology. Designed for both large-scale shoots and intimate creative sessions, it's where ideas take their first physical form.",
-    more: "Spanning over 2,400 sq ft, the studio features a fully rigged overhead lighting grid, cyclorama wall, soundproofed recording booth, and a green screen bay. We accommodate everything from editorial fashion to full commercial productions — backed by our in-house art department and a wardrobe room stocked for any brief.",
-  },
-  {
-    img: img2,
-    title: "Innovation Lab",
-    tag: "R&D Space",
-    desc: "A dedicated space for experimentation and rapid prototyping. Our team pushes the limits of visual storytelling here — testing new formats, materials, and techniques before they hit the market.",
-    more: "The lab runs on a 48-hour prototype cycle. Ideas pitched on Monday are stress-tested with real audiences by Wednesday. We've developed proprietary motion-capture rigs, custom LED installations, and real-time rendering pipelines that have since been rolled into full client campaigns. If it hasn't been tried before, this is where we try it.",
-  },
-  {
-    img: img3,
-    title: "Collaboration Lounge",
-    tag: "Team Space",
-    desc: "Built for open thinking. The collaboration lounge brings clients, directors, and creators together in a relaxed setting that sparks honest conversation and breakthrough ideas.",
-    more: "Designed by an award-winning interior studio, the lounge seats up to 20 and is equipped with modular whiteboards, dual projection screens, and a connected audio system. We host weekly creative roundtables here, open to clients, freelancers, and partners. Some of our most celebrated campaigns were born in casual conversations in this room.",
-  },
-  {
-    img: img4,
-    title: "Post-Production Suite",
-    tag: "Finishing Room",
-    desc: "Colour grading, sound design, and final delivery — all under one roof. Our post-production suite runs around the clock to meet even the tightest deadlines without compromising quality.",
-    more: "The suite runs DaVinci Resolve on a dedicated GPU cluster, paired with a Dolby Atmos–certified monitoring room for audio finishing. Our colourists work to P3 and HDR standards for both broadcast and cinema deliverables. Remote client review sessions are supported via frame.io integration, so approvals happen fast — wherever you are in the world.",
-  },
-];
+const facilities = [];
 
 export function WorkPage() {
   const navigate = useNavigate();
-  const [expanded, setExpanded] = useState<number | null>(null);
 
   return (
     <div className="min-h-screen bg-[#0a0a0a]">
 
       {/* ── Hero Header ──────────────────────────────────────── */}
-      <div className="relative w-full overflow-hidden" style={{ height: "100vh" }}>
+      <div className="relative w-full overflow-hidden" style={{ height: "50vh" }}>
         <img
           src={headerImg}
           alt="Our facilities"
@@ -94,9 +65,13 @@ export function WorkPage() {
             OVISION
           </button>
           <div className="flex items-center gap-8">
-            {["Work", "About", "Contact"].map((item) => (
+            {["Work", "Facilities", "Team", "About", "Contact"].map((item) => (
               <button
                 key={item}
+                onClick={() => {
+                  if (item === "Facilities") navigate("/facilities");
+                  else if (item === "Team") navigate("/team");
+                }}
                 className={`bg-transparent border-none cursor-pointer transition-colors duration-200 ${item === "Work" ? "text-white" : "text-white/40 hover:text-white"}`}
                 style={{ fontSize: "0.8rem", letterSpacing: "0.1em" }}
               >
@@ -170,63 +145,56 @@ export function WorkPage() {
       </div>
 
       {/* ── Machine Boxes ─────────────────────────────────────── */}
-      <div className="px-8 md:px-16 lg:px-24 py-20">
+      <div className="px-8 md:px-16 lg:px-24 py-24">
         <motion.div
-          className="mb-10"
+          className="mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
         >
-          <div className="flex items-center gap-3 mb-3">
-            <div className="w-6 h-px bg-white/30" />
-            <span className="text-white/35 uppercase" style={{ fontSize: "0.65rem", letterSpacing: "0.25em" }}>
-              Equipment
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-8 h-px bg-white/40" />
+            <span className="text-white/40 uppercase" style={{ fontSize: "0.7rem", letterSpacing: "0.25em", fontWeight: 500 }}>
+              Equipment & Technology
             </span>
           </div>
           <h2
             className="text-white"
-            style={{ fontSize: "clamp(1.6rem, 3vw, 2.5rem)", fontWeight: 600, letterSpacing: "-0.02em" }}
+            style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.1 }}
           >
             Our Machinery
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl">
           {machines.map((m, i) => (
             <motion.div
               key={m.name}
-              className="group relative rounded-2xl border border-white/8 bg-white/4 p-6 hover:border-white/20 hover:bg-white/7 transition-all duration-300 cursor-default overflow-hidden"
+              className="group relative border border-white/15 bg-white/5 p-8 hover:border-white/30 hover:bg-white/8 transition-all duration-300 cursor-pointer overflow-hidden rounded-sm"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+              onClick={() => navigate(`/work/machinery/${m.name}`)}
+              style={{ minHeight: "200px", display: "flex", flexDirection: "column", justifyContent: "center" }}
             >
-              {/* Subtle glow on hover */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"
-                style={{ background: "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.04) 0%, transparent 70%)" }}
-              />
-
               <div
-                className="text-white/20 mb-5 group-hover:text-white/40 transition-colors duration-300"
-                style={{ fontSize: "1.6rem" }}
+                className="text-white/30 mb-6 group-hover:text-white/50 transition-colors duration-300"
+                style={{ fontSize: "2.5rem" }}
               >
                 {m.icon}
               </div>
 
               <h3
-                className="text-white mb-2"
-                style={{ fontSize: "0.95rem", fontWeight: 600, letterSpacing: "-0.01em" }}
+                className="text-white"
+                style={{ fontSize: "1.25rem", fontWeight: 600, letterSpacing: "-0.01em", lineHeight: 1.3 }}
               >
                 {m.name}
               </h3>
 
-              <p className="text-white/35 group-hover:text-white/50 transition-colors duration-300" style={{ fontSize: "0.78rem", lineHeight: 1.65 }}>
-                {m.desc}
-              </p>
-
               {/* Bottom accent line */}
-              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-white/0 via-white/20 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </motion.div>
           ))}
         </div>
@@ -329,29 +297,6 @@ export function WorkPage() {
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <motion.div
-          className="mt-20 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-white/10 pt-12"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div>
-            <p className="text-white/60 mb-1" style={{ fontSize: "1.1rem", fontWeight: 500 }}>
-              Interested in visiting us?
-            </p>
-            <p className="text-white/30" style={{ fontSize: "0.85rem" }}>
-              We welcome clients, partners, and collaborators to see the space firsthand.
-            </p>
-          </div>
-          <button
-            className="flex-shrink-0 px-8 py-3.5 border border-white/20 text-white/70 rounded-full hover:border-white/50 hover:text-white transition-all duration-300 hover:scale-105 cursor-pointer"
-            style={{ fontSize: "0.8rem", letterSpacing: "0.06em" }}
-          >
-            Book a Tour
-          </button>
-        </motion.div>
       </div>
     </div>
   );
