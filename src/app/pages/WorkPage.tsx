@@ -23,11 +23,6 @@ const machines = [
     icon: "⊤",
     desc: "20-tonne overhead crane for safe heavy-load handling.",
   },
-  {
-    name: "Flange Rolling",
-    icon: "◎",
-    desc: "Custom flange rolling for pipes, vessels, and structural rings.",
-  },
 ];
 
 const facilities = [];
