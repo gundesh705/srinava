@@ -22,7 +22,7 @@ const machines = [
       },
       {
         name: "Power Press",
-        img: "https://cdn.builder.io/api/v1/image/assets%2F6081257f56164f79a999356618a191cf%2Fbee33e28a68b47b1b48deaec0895f0c3?format=webp&width=800&height=1200",
+        img: "https://cdn.builder.io/api/v1/image/assets%2F6081257f56164f79a999356618a191cf%2F2cb96f4157784cdb86b4857639ab0373?format=webp&width=800&height=1200",
         desc: "Our Mechanical Power Press is designed for efficient punching, blanking, piercing, and forming operations in sheet metal fabrication. Built with a robust cast iron frame and flywheel-driven mechanism, the machine delivers reliable performance, high productivity, and precision for manufacturing brackets, panels, structural components, and custom fabricated parts.",
       },
       {
