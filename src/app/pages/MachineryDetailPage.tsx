@@ -13,12 +13,41 @@ const machines = [
   {
     name: "Machinaries",
     icon: "⌒",
-    desc: "CNC press brake for complex profiles and high-volume bends.",
+    desc: "Hydraulic press brake, power press, and bandsaw cutting systems.",
+    subEquipment: [
+      {
+        name: "Hydraulic Press Brake",
+        img: "https://cdn.builder.io/api/v1/image/assets%2F6081257f56164f79a999356618a191cf%2F3eb2fd70be9041b9acf5ec5641c4db7f?format=webp&width=800&height=1200",
+        desc: "Our CNC Hydraulic Press Brake is designed for high-precision sheet metal bending and forming operations. With the capability to bend mild steel sheets up to 8 mm thickness, the machine delivers exceptional accuracy, repeatability, and productivity. Equipped with a CNC control system and heavy-duty hydraulic drive, it enables the fabrication of complex profiles, industrial enclosures, structural components, tanks, and custom sheet metal products.",
+      },
+      {
+        name: "Power Press",
+        img: "https://cdn.builder.io/api/v1/image/assets%2F6081257f56164f79a999356618a191cf%2F2cb96f4157784cdb86b4857639ab0373?format=webp&width=800&height=1200",
+        desc: "Our Mechanical Power Press is designed for efficient punching, blanking, piercing, and forming operations in sheet metal fabrication. Built with a robust cast iron frame and flywheel-driven mechanism, the machine delivers reliable performance, high productivity, and precision for manufacturing brackets, panels, structural components, and custom fabricated parts.",
+      },
+      {
+        name: "Bandsaw Machine",
+        img: "https://cdn.builder.io/api/v1/image/assets%2F6081257f56164f79a999356618a191cf%2F64365b5c7ba04d77b95a9d95d2631353?format=webp&width=800&height=1200",
+        desc: "Our Horizontal Metal Cutting Bandsaw Machine provides precise and efficient cutting of pipes, tubes, solid bars, and structural steel sections. Equipped with a hydraulic feed system and heavy-duty clamping mechanism, the machine ensures accurate cuts, improved productivity, and reduced material wastage, making it an essential part of our fabrication and manufacturing operations.",
+      },
+      {
+        name: "Flange Rolling Machine",
+        img: "https://cdn.builder.io/api/v1/image/assets%2F6081257f56164f79a999356618a191cf%2F31d50fec31c44e6b9e768f8c0f1688e5?format=webp&width=800&height=1200",
+        desc: "Our custom-built Flange Rolling Machine is engineered for precise rolling of flat bars up to 100 mm width into circular rings and flanges. Featuring a robust gear-driven 3-roller mechanism and heavy-duty steel construction, the machine is ideal for manufacturing tank flanges, support rings, structural components, and custom fabrication assemblies with high accuracy and consistency.",
+      },
+      {
+        name: "3-Roller Plate Rolling Machine",
+        img: "https://cdn.builder.io/api/v1/image/assets%2F6081257f56164f79a999356618a191cf%2F330c9784799d4320b7ad9359b95c5a7d?format=webp&width=800&height=1200",
+        desc: "Our custom-built 3-Roller Plate Rolling Machine is designed for precision rolling of metal plates up to 16 mm thickness and 1500 mm width. Powered by a 3 HP gear-driven transmission system, the machine enables efficient fabrication of cylindrical shells, storage tanks, ducts, and structural components. Its heavy-duty construction ensures reliable performance for demanding industrial applications.",
+      },
+    ],
   },
   {
     name: "Crane",
     icon: "⊤",
     desc: "20-tonne overhead crane for safe heavy-load handling.",
+    img: "https://cdn.builder.io/api/v1/image/assets%2F6081257f56164f79a999356618a191cf%2F6241501ca2034cd9a5ce55e8a872091b?format=webp&width=800&height=1200",
+    more: "Sri Nava Industries is equipped with a 2 Ton Material Handling Crane capable of transporting raw materials, fabricated assemblies, and finished products throughout the facility. The crane enables safe, efficient, and seamless movement of heavy components, improving productivity and supporting large-scale fabrication operations.",
   },
   {
     name: "Welding",
@@ -83,69 +112,130 @@ export function MachineryDetailPage() {
           ← Back to Work
         </motion.button>
 
-        <motion.div
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          {/* Image */}
-          {machinery.img && (
-            <motion.div
-              className="relative overflow-hidden rounded-2xl"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <img
-                src={machinery.img}
-                alt={machinery.name}
-                className="w-full h-full object-cover rounded-2xl"
-              />
-            </motion.div>
-          )}
-
-          {/* Content */}
+        {machinery.subEquipment ? (
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            <div className="flex items-center gap-3 mb-4">
-              <div
-                className="text-white/40"
-                style={{ fontSize: "2rem" }}
-              >
-                {machinery.icon}
-              </div>
-            </div>
-
             <h1
-              className="text-white mb-6"
+              className="text-white mb-4"
               style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.1 }}
             >
               {machinery.name}
             </h1>
 
-            <p
-              className="text-white/60 mb-8"
-              style={{ fontSize: "1.1rem", lineHeight: 1.7 }}
-            >
-              {machinery.desc}
-            </p>
-
-            {machinery.more && (
-              <div className="border-t border-white/10 pt-8">
-                <p
-                  className="text-white/45"
-                  style={{ fontSize: "0.95rem", lineHeight: 1.8 }}
+            <div className="space-y-12">
+              {machinery.subEquipment.map((equipment, idx) => (
+                <motion.div
+                  key={equipment.name}
+                  className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: idx * 0.2 }}
                 >
-                  {machinery.more}
-                </p>
-              </div>
-            )}
+                  <motion.div
+                    className="relative overflow-hidden rounded-2xl max-w-xs"
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6, delay: idx * 0.2 + 0.1 }}
+                    style={{ aspectRatio: "1" }}
+                  >
+                    <img
+                      src={equipment.img}
+                      alt={equipment.name}
+                      className="w-full h-full object-cover rounded-2xl"
+                    />
+                  </motion.div>
+
+                  <motion.div
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: idx * 0.2 + 0.2 }}
+                  >
+                    <h2
+                      className="text-white mb-6"
+                      style={{ fontSize: "1.75rem", fontWeight: 600, letterSpacing: "-0.01em", lineHeight: 1.2 }}
+                    >
+                      {equipment.name}
+                    </h2>
+
+                    <p
+                      className="text-white/45"
+                      style={{ fontSize: "0.95rem", lineHeight: 1.8 }}
+                    >
+                      {equipment.desc}
+                    </p>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
-        </motion.div>
+        ) : (
+          <motion.div
+            className="grid grid-cols-1 lg:grid-cols-2 gap-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            {/* Image */}
+            {machinery.img && (
+              <motion.div
+                className="relative overflow-hidden rounded-2xl"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                <img
+                  src={machinery.img}
+                  alt={machinery.name}
+                  className="w-full h-full object-cover rounded-2xl"
+                />
+              </motion.div>
+            )}
+
+            {/* Content */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div
+                  className="text-white/40"
+                  style={{ fontSize: "2rem" }}
+                >
+                  {machinery.icon}
+                </div>
+              </div>
+
+              <h1
+                className="text-white mb-6"
+                style={{ fontSize: "clamp(2rem, 4vw, 3.5rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.1 }}
+              >
+                {machinery.name}
+              </h1>
+
+              <p
+                className="text-white/60 mb-8"
+                style={{ fontSize: "1.1rem", lineHeight: 1.7 }}
+              >
+                {machinery.desc}
+              </p>
+
+              {machinery.more && (
+                <div className="border-t border-white/10 pt-8">
+                  <p
+                    className="text-white/45"
+                    style={{ fontSize: "0.95rem", lineHeight: 1.8 }}
+                  >
+                    {machinery.more}
+                  </p>
+                </div>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
       </div>
     </div>
   );

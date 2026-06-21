@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router";
 import { motion } from "motion/react";
 import headerImg from "../../imports/wmremove-transformed.png";
+import { Navigation } from "../components/Navigation";
 import img1 from "../../imports/WhatsApp_Image_2026-06-21_at_10.21.12.jpeg";
 import img2 from "../../imports/sgsfbr.jpeg";
 import img3 from "../../imports/WhatsApp_Image_2026-06-21_at_10.19.35.jpeg";
@@ -17,12 +18,41 @@ const machines = [
   {
     name: "Machinaries",
     icon: "⌒",
-    desc: "CNC press brake for complex profiles and high-volume bends.",
+    desc: "Hydraulic press brake, power press, and bandsaw cutting systems.",
+    subEquipment: [
+      {
+        name: "Hydraulic Press Brake",
+        img: "https://cdn.builder.io/api/v1/image/assets%2F6081257f56164f79a999356618a191cf%2F3eb2fd70be9041b9acf5ec5641c4db7f?format=webp&width=800&height=1200",
+        desc: "Our CNC Hydraulic Press Brake is designed for high-precision sheet metal bending and forming operations. With the capability to bend mild steel sheets up to 8 mm thickness, the machine delivers exceptional accuracy, repeatability, and productivity. Equipped with a CNC control system and heavy-duty hydraulic drive, it enables the fabrication of complex profiles, industrial enclosures, structural components, tanks, and custom sheet metal products.",
+      },
+      {
+        name: "Power Press",
+        img: "https://cdn.builder.io/api/v1/image/assets%2F6081257f56164f79a999356618a191cf%2F2cb96f4157784cdb86b4857639ab0373?format=webp&width=800&height=1200",
+        desc: "Our Mechanical Power Press is designed for efficient punching, blanking, piercing, and forming operations in sheet metal fabrication. Built with a robust cast iron frame and flywheel-driven mechanism, the machine delivers reliable performance, high productivity, and precision for manufacturing brackets, panels, structural components, and custom fabricated parts.",
+      },
+      {
+        name: "Bandsaw Machine",
+        img: "https://cdn.builder.io/api/v1/image/assets%2F6081257f56164f79a999356618a191cf%2F64365b5c7ba04d77b95a9d95d2631353?format=webp&width=800&height=1200",
+        desc: "Our Horizontal Metal Cutting Bandsaw Machine provides precise and efficient cutting of pipes, tubes, solid bars, and structural steel sections. Equipped with a hydraulic feed system and heavy-duty clamping mechanism, the machine ensures accurate cuts, improved productivity, and reduced material wastage, making it an essential part of our fabrication and manufacturing operations.",
+      },
+      {
+        name: "Flange Rolling Machine",
+        img: "https://cdn.builder.io/api/v1/image/assets%2F6081257f56164f79a999356618a191cf%2F31d50fec31c44e6b9e768f8c0f1688e5?format=webp&width=800&height=1200",
+        desc: "Our custom-built Flange Rolling Machine is engineered for precise rolling of flat bars up to 100 mm width into circular rings and flanges. Featuring a robust gear-driven 3-roller mechanism and heavy-duty steel construction, the machine is ideal for manufacturing tank flanges, support rings, structural components, and custom fabrication assemblies with high accuracy and consistency.",
+      },
+      {
+        name: "3-Roller Plate Rolling Machine",
+        img: "https://cdn.builder.io/api/v1/image/assets%2F6081257f56164f79a999356618a191cf%2F330c9784799d4320b7ad9359b95c5a7d?format=webp&width=800&height=1200",
+        desc: "Our custom-built 3-Roller Plate Rolling Machine is designed for precision rolling of metal plates up to 16 mm thickness and 1500 mm width. Powered by a 3 HP gear-driven transmission system, the machine enables efficient fabrication of cylindrical shells, storage tanks, ducts, and structural components. Its heavy-duty construction ensures reliable performance for demanding industrial applications.",
+      },
+    ],
   },
   {
     name: "Crane",
     icon: "⊤",
     desc: "20-tonne overhead crane for safe heavy-load handling.",
+    img: "https://cdn.builder.io/api/v1/image/assets%2F6081257f56164f79a999356618a191cf%2F6241501ca2034cd9a5ce55e8a872091b?format=webp&width=800&height=1200",
+    more: "Sri Nava Industries is equipped with a 2 Ton Material Handling Crane capable of transporting raw materials, fabricated assemblies, and finished products throughout the facility. The crane enables safe, efficient, and seamless movement of heavy components, improving productivity and supporting large-scale fabrication operations.",
   },
   {
     name: "Welding",
@@ -57,14 +87,7 @@ export function WorkPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <button
-            onClick={() => navigate("/")}
-            className="text-white uppercase bg-transparent border-none cursor-pointer"
-            style={{ fontSize: "0.85rem", letterSpacing: "0.2em" }}
-          >
-            OVISION
-          </button>
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-8 ml-auto">
             {["Work", "Facilities", "Team", "About", "Contact"].map((item) => (
               <button
                 key={item}
