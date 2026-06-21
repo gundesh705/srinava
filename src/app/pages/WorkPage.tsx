@@ -57,13 +57,6 @@ export function WorkPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <button
-            onClick={() => navigate("/")}
-            className="text-white uppercase bg-transparent border-none cursor-pointer"
-            style={{ fontSize: "0.85rem", letterSpacing: "0.2em" }}
-          >
-            OVISION
-          </button>
           <div className="flex items-center gap-8">
             {["Work", "Facilities", "Team", "About", "Contact"].map((item) => (
               <button
