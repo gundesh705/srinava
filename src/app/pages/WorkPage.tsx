@@ -300,29 +300,6 @@ export function WorkPage() {
           ))}
         </div>
 
-        {/* Bottom CTA */}
-        <motion.div
-          className="mt-20 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-white/10 pt-12"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div>
-            <p className="text-white/60 mb-1" style={{ fontSize: "1.1rem", fontWeight: 500 }}>
-              Interested in visiting us?
-            </p>
-            <p className="text-white/30" style={{ fontSize: "0.85rem" }}>
-              We welcome clients, partners, and collaborators to see the space firsthand.
-            </p>
-          </div>
-          <button
-            className="flex-shrink-0 px-8 py-3.5 border border-white/20 text-white/70 rounded-full hover:border-white/50 hover:text-white transition-all duration-300 hover:scale-105 cursor-pointer"
-            style={{ fontSize: "0.8rem", letterSpacing: "0.06em" }}
-          >
-            Book a Tour
-          </button>
-        </motion.div>
       </div>
     </div>
   );
