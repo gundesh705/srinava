@@ -119,16 +119,17 @@ export function MachineryDetailPage() {
               {machinery.subEquipment.map((equipment, idx) => (
                 <motion.div
                   key={equipment.name}
-                  className="grid grid-cols-1 lg:grid-cols-2 gap-12"
+                  className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: idx * 0.2 }}
                 >
                   <motion.div
-                    className="relative overflow-hidden rounded-2xl"
+                    className="relative overflow-hidden rounded-2xl max-w-xs"
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.6, delay: idx * 0.2 + 0.1 }}
+                    style={{ aspectRatio: "1" }}
                   >
                     <img
                       src={equipment.img}
