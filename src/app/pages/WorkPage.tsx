@@ -40,7 +40,7 @@ export function WorkPage() {
     <div className="min-h-screen bg-[#0a0a0a]">
 
       {/* ── Hero Header ──────────────────────────────────────── */}
-      <div className="relative w-full overflow-hidden" style={{ height: "100vh" }}>
+      <div className="relative w-full overflow-hidden" style={{ height: "50vh" }}>
         <img
           src={headerImg}
           alt="Our facilities"
