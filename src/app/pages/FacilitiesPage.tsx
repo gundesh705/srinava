@@ -375,8 +375,8 @@ export function FacilitiesPage() {
         </>
       )}
 
-      {/* Facilities Grid */}
-      <div className="px-8 md:px-16 lg:px-24 py-24">
+      {/* Fabrication Showcase Section */}
+      <div className="px-8 md:px-16 lg:px-24 py-20">
         <motion.div
           className="mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -387,75 +387,37 @@ export function FacilitiesPage() {
           <div className="flex items-center gap-3 mb-4">
             <div className="w-8 h-px bg-white/40" />
             <span className="text-white/40 uppercase" style={{ fontSize: "0.7rem", letterSpacing: "0.25em", fontWeight: 500 }}>
-              Our Spaces
+              Our Capabilities
             </span>
           </div>
           <h2
-            className="text-white"
+            className="text-white mb-8"
             style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.1 }}
           >
-            Facilities Overview
+            Fabrication Showcase
           </h2>
+          <p className="text-white/60 max-w-2xl" style={{ fontSize: "1.05rem", lineHeight: 1.8 }}>
+            Discover the excellence and precision that define our fabrication services. From concept to completion, we deliver unmatched quality and innovation in every project.
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {facilities.map((f, i) => (
-            <motion.div
-              key={f.name}
-              className="group relative border border-white/15 bg-white/5 p-8 hover:border-white/30 hover:bg-white/8 transition-all duration-300 rounded-sm overflow-hidden"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <div className="flex items-start justify-between mb-4">
-                <h3
-                  className="text-white"
-                  style={{ fontSize: "1.25rem", fontWeight: 600, letterSpacing: "-0.01em" }}
-                >
-                  {f.name}
-                </h3>
-                <span
-                  className="text-white/30 text-xs px-3 py-1 border border-white/20 rounded-full"
-                  style={{ fontSize: "0.65rem", letterSpacing: "0.1em" }}
-                >
-                  {f.tag}
-                </span>
-              </div>
-
-              <p className="text-white/45" style={{ fontSize: "0.95rem", lineHeight: 1.7 }}>
-                {f.desc}
-              </p>
-
-              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-white/0 via-white/20 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </motion.div>
-          ))}
-        </div>
-      </div>
-
-      {/* Footer CTA */}
-      <div className="px-8 md:px-16 lg:px-24 pb-24">
         <motion.div
-          className="border-t border-white/10 pt-16 text-center"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          className="text-center mt-12"
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <p className="text-white/60 mb-2" style={{ fontSize: "1.1rem", fontWeight: 500 }}>
-            Ready to experience our facilities?
-          </p>
-          <p className="text-white/30 mb-8" style={{ fontSize: "0.95rem" }}>
-            Schedule a tour or discuss your project requirements with our team.
-          </p>
           <button
-            className="px-8 py-3.5 border border-white/20 text-white/70 hover:border-white/50 hover:text-white transition-all duration-300 hover:scale-105 cursor-pointer bg-transparent"
-            style={{ fontSize: "0.8rem", letterSpacing: "0.06em" }}
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="px-10 py-4 border border-white/20 text-white/70 hover:border-white/50 hover:text-white transition-all duration-300 hover:scale-105 cursor-pointer bg-transparent rounded-full"
+            style={{ fontSize: "0.85rem", letterSpacing: "0.06em", fontWeight: 500 }}
           >
-            Schedule a Tour
+            Explore Fabrication Showcase
           </button>
         </motion.div>
       </div>
+
     </div>
   );
 }

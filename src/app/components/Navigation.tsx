@@ -6,14 +6,14 @@ export function Navigation() {
 
   const navItems = [
     { label: "Home", path: "/" },
-    { label: "Works", path: "/work" },
-    { label: "Facilities", path: "/facilities" },
+    { label: "Facilities", path: "/work" },
+    { label: "About", path: "/about" },
     { label: "Team", path: "/team" },
     { label: "Contact", path: "#" },
   ];
 
   return (
-    <motion.nav
+    <motion.div
       className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between px-8 py-6 bg-black/40 backdrop-blur-md"
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
@@ -38,6 +38,6 @@ export function Navigation() {
           </button>
         ))}
       </div>
-    </motion.nav>
+    </motion.div>
   );
 }

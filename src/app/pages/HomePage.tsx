@@ -1,14 +1,12 @@
 import { useNavigate } from "react-router";
 import { motion } from "motion/react";
 import bgVideo from "../../imports/make_this_animated__like_a_ovi.mp4";
-import { Navigation } from "../components/Navigation";
 
 export function HomePage() {
   const navigate = useNavigate();
 
   return (
     <section className="relative w-full h-screen overflow-hidden">
-      <Navigation />
       <video
         className="absolute inset-0 w-full h-full object-cover"
         src={bgVideo}
