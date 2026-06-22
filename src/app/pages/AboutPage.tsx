@@ -4,14 +4,28 @@ import { useEffect, useState } from "react";
 
 const cinemaStyles = `
 :root {
-  --steel-dark: #0a0d12;
-  --steel-mid: #161b22;
+  --steel-950: #050506;
+  --steel-900: #08090b;
+  --steel-800: #0d0e11;
+  --steel-700: #15171b;
+  --steel-dark: #08090b;
+  --steel-mid: #15171b;
   --steel-light: #2a313b;
-  --gold: #e74c3c;
-  --gold-bright: #ff6b6b;
+  --crimson: #e11d2e;
+  --crimson-bright: #ff3340;
+  --crimson-deep: #8f0f1a;
+  --crimson-soft: rgba(225, 29, 46, 0.5);
+  --crimson-faint: rgba(225, 29, 46, 0.14);
+  --ember: #ff7a2c;
+  --gold: #e11d2e;
+  --gold-bright: #ff3340;
   --silver: #c8ccd2;
-  --accent-red: #e74c3c;
+  --accent-red: #e11d2e;
   --text-soft: rgba(255, 255, 255, 0.65);
+  --text-dim: rgba(255, 255, 255, 0.56);
+  --text-faint: rgba(255, 255, 255, 0.34);
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.14);
   --scene-dur: 0.9s;
 }
 
@@ -35,9 +49,7 @@ body {
   min-height: 600px;
   overflow: hidden;
   background:
-    radial-gradient(ellipse at 30% 20%, rgba(255,65,65,0.10), transparent 55%),
-    radial-gradient(ellipse at 75% 80%, rgba(200,30,30,0.07), transparent 55%),
-    linear-gradient(160deg, #0a0d12 0%, #11161d 45%, #0a0d12 100%);
+    radial-gradient(140% 90% at 50% -10%, #141416 0%, var(--steel-950) 60%);
 }
 
 /* Steel texture overlay */
@@ -56,7 +68,7 @@ body {
   position: absolute;
   top: 0; left: -40%;
   width: 60%; height: 100%;
-  background: linear-gradient(105deg, transparent, rgba(255,65,65,0.12), rgba(255,255,255,0.06), transparent);
+  background: linear-gradient(105deg, transparent, rgba(225,29,46,0.15), rgba(255,255,255,0.08), transparent);
   transform: skewX(-18deg);
   animation: sweep 9s linear infinite;
   pointer-events: none;
@@ -71,10 +83,10 @@ body {
 .particles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
 .spark {
   position: absolute;
-  width: 2px; height: 2px;
+  width: 3px; height: 3px;
   border-radius: 50%;
-  background: var(--gold-bright);
-  box-shadow: 0 0 6px 1px rgba(255,100,100,0.8);
+  background: var(--ember);
+  box-shadow: 0 0 8px 2px rgba(255, 122, 44, 0.7);
   bottom: -10px;
   animation: rise linear infinite;
   opacity: 0;
@@ -110,24 +122,16 @@ body {
   line-height: 1.05;
 
   background: linear-gradient(
-      110deg,
-      #ff0000 0%,
-      #ff3333 30%,
-      #ffffff 50%,
-      #ff3333 70%,
-      #cc0000 100%
+      135deg,
+      #ffffff 0%,
+      #f2f2f2 42%,
+      var(--crimson-bright) 100%
   );
 
   background-size: 250% auto;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  text-shadow:
-    0 0 10px rgba(255,255,255,0.3),
-    0 0 20px rgba(255,0,0,0.3);    -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  text-shadow: none;
 }
 
 .subtitle {
@@ -1044,25 +1048,6 @@ export function AboutPage() {
             </p>
           </motion.div>
 
-          {/* CTA Section */}
-          <motion.div
-            className="cta-section"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-          >
-            <h2 className="section-title" style={{ justifyContent: "center" }}>Ready to Partner With Us</h2>
-            <p style={{ fontSize: "1rem", color: "rgba(255, 255, 255, 0.6)", marginBottom: "2rem", maxWidth: "500px", margin: "0 auto 2rem" }}>
-              Discover how Sri Nava Industries can deliver excellence to your manufacturing needs
-            </p>
-            <button
-              onClick={() => setGalleryOpen(true)}
-              className="cta-button"
-            >
-              Fabrication Portfolio
-            </button>
-          </motion.div>
-
           {/* Gallery Modal */}
           {galleryOpen && (
             <div className="gallery-overlay" onClick={() => setGalleryOpen(false)}>
@@ -1216,7 +1201,7 @@ export function AboutPage() {
                 .gallery-thumbnail img {
                   width: 100%;
                   height: 100%;
-                  object-fit: cover;
+                  object-fit: contain;
                 }
 
                 .close-gallery {

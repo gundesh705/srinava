@@ -11,8 +11,12 @@ const machines = [
     more: "Sri Nava Industries is equipped with an industrial Plasma Cutting Machine capable of cutting stainless steel plates up to 25 mm thickness. The machine provides fast, accurate, and efficient cutting for heavy fabrication projects, structural components, tanks, vessels, and custom metal parts. This capability enables us to process thick materials while maintaining productivity and quality standards",
     additionalImages: [
       {
-        img: "https://cdn.builder.io/api/v1/image/assets%2F6081257f56164f79a999356618a191cf%2F1f24f4638f844b5cab32080a519fe8d0?format=webp&width=800&height=1200",
+        img: "https://cdn.builder.io/api/v1/image/assets%2Ffc9c51b5c7bb434bb02302d7c203af2b%2Fe831d4f816804fff9050a1d9b4264f52?format=webp&width=800&height=1200",
         description: "Our 3 kW CNC Fiber Laser Cutting Machine delivers high-speed, high-precision sheet metal processing using premium components from RayTools, HIWIN, THK, SMC, Schneider Electric, and ABB. With positioning accuracy of ±0.05 mm and the capability to cut mild steel up to 20 mm thickness, the machine ensures superior quality, repeatability, and productivity for industrial fabrication requirements.",
+      },
+      {
+        img: "https://cdn.builder.io/api/v1/image/assets%2F6081257f56164f79a999356618a191cf%2Fb1ef51b9ed6048bc97790f3eef6d49f5?format=webp&width=800&height=1200",
+        description: "Sri Nava Industries is equipped with an industrial Plasma Cutting Machine capable of cutting stainless steel plates up to 25 mm thickness. The machine provides fast, accurate, and efficient cutting for heavy fabrication projects, structural components, tanks, vessels, and custom metal parts. This capability enables us to process thick materials while maintaining productivity and quality standards.",
       },
     ],
   },
@@ -23,7 +27,7 @@ const machines = [
     subEquipment: [
       {
         name: "Hydraulic Press Brake",
-        img: "https://cdn.builder.io/api/v1/image/assets%2F6081257f56164f79a999356618a191cf%2F3eb2fd70be9041b9acf5ec5641c4db7f?format=webp&width=800&height=1200",
+        img: "https://cdn.builder.io/api/v1/image/assets%2Ffc9c51b5c7bb434bb02302d7c203af2b%2Fdb2d1657f4324690ab71fa472cb52302?format=webp&width=800&height=1200",
         desc: "Our CNC Hydraulic Press Brake is designed for high-precision sheet metal bending and forming operations. With the capability to bend mild steel sheets up to 8 mm thickness, the machine delivers exceptional accuracy, repeatability, and productivity. Equipped with a CNC control system and heavy-duty hydraulic drive, it enables the fabrication of complex profiles, industrial enclosures, structural components, tanks, and custom sheet metal products.",
       },
       {
@@ -33,7 +37,7 @@ const machines = [
       },
       {
         name: "Bandsaw Machine",
-        img: "https://cdn.builder.io/api/v1/image/assets%2F6081257f56164f79a999356618a191cf%2F64365b5c7ba04d77b95a9d95d2631353?format=webp&width=800&height=1200",
+        img: "https://cdn.builder.io/api/v1/image/assets%2Ffc9c51b5c7bb434bb02302d7c203af2b%2F5c9c8092bb0049e38f841c76a62179f8?format=webp&width=800&height=1200",
         desc: "Our Horizontal Metal Cutting Bandsaw Machine provides precise and efficient cutting of pipes, tubes, solid bars, and structural steel sections. Equipped with a hydraulic feed system and heavy-duty clamping mechanism, the machine ensures accurate cuts, improved productivity, and reduced material wastage, making it an essential part of our fabrication and manufacturing operations.",
       },
       {
@@ -54,6 +58,12 @@ const machines = [
     desc: "20-tonne overhead crane for safe heavy-load handling.",
     img: "https://cdn.builder.io/api/v1/image/assets%2F6081257f56164f79a999356618a191cf%2F6241501ca2034cd9a5ce55e8a872091b?format=webp&width=800&height=1200",
     more: "Sri Nava Industries is equipped with a 2 Ton Material Handling Crane capable of transporting raw materials, fabricated assemblies, and finished products throughout the facility. The crane enables safe, efficient, and seamless movement of heavy components, improving productivity and supporting large-scale fabrication operations.",
+    additionalImages: [
+      {
+        img: "https://cdn.builder.io/api/v1/image/assets%2Ffc9c51b5c7bb434bb02302d7c203af2b%2F0f0b000e1b5741b29644e97b3a710a7b?format=webp&width=800&height=1200",
+        description: "Sri Nava Industries is equipped with a 2 Ton Material Handling Crane that operates throughout the entire facility, enabling the safe and efficient movement of heavy raw materials, fabricated components, and finished assemblies. This capability allows us to undertake heavy-duty and complex fabrication projects while ensuring improved productivity, precision, and workplace safety. The crane plays a vital role in supporting large-scale manufacturing, assembly, and material handling operations across our workshop.",
+      },
+    ],
   },
   {
     name: "Welding",
@@ -63,8 +73,12 @@ const machines = [
     more: "Our Arc Welding Transformer is designed to deliver reliable and consistent welding performance for industrial and fabrication applications. Built with a robust transformer-based design, it ensures stable current output and long service life. Multiple current settings allow easy adjustment for different electrode sizes and welding requirements. The heavy-duty construction makes it suitable for continuous operation in demanding environments. Widely used in structural fabrication, repair works, and general metal joining, it offers dependable performance with minimal maintenance.",
     additionalImages: [
       {
-        img: "https://cdn.builder.io/api/v1/image/assets%2F6081257f56164f79a999356618a191cf%2Ff07fc4b2f5c24ec4b0e58ddbf85d1ead?format=webp&width=800&height=1200",
+        img: "https://cdn.builder.io/api/v1/image/assets%2Ffc9c51b5c7bb434bb02302d7c203af2b%2F861a95ec1c57408c8d2e328ba1421ba9?format=webp&width=800&height=1200",
         description: "Sri Nava Industries utilizes the ESAB AUTO K 400 CO₂/MIG Welding Machine for high-quality fabrication and assembly operations. With a welding output of up to 400 Amps and an automatic wire feed system, the machine delivers strong, consistent welds with excellent productivity. It is ideally suited for manufacturing structural assemblies, tanks, machine frames, sheet metal components, and custom fabrication projects.",
+      },
+      {
+        img: "https://cdn.builder.io/api/v1/image/assets%2Ffc9c51b5c7bb434bb02302d7c203af2b%2F2d3c44580dd547fb88f293ea74643ef9?format=webp&width=800&height=1200",
+        description: "Sri Nava Industries is equipped with Oil-Cooled Arc Welding Machines designed for heavy-duty fabrication, assembly, and repair applications. These machines provide reliable welding performance, strong weld penetration, and excellent joint strength for structural steel, tanks, machine frames, and industrial components. Our arc welding facility enables us to undertake both routine fabrication work and complex heavy-duty projects with confidence and quality assurance.",
       },
     ],
   },
@@ -227,7 +241,7 @@ export function MachineryDetailPage() {
                         <img
                           src={equipment.img}
                           alt={equipment.name}
-                          className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                          className="h-full w-full object-contain transition-transform duration-700 ease-out group-hover:scale-105"
                         />
                         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0c0606] via-transparent to-transparent opacity-60" />
                         <div className="pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-red-500/0 transition-all duration-500 group-hover:ring-red-500/40" />
@@ -282,108 +296,7 @@ export function MachineryDetailPage() {
               })}
             </div>
           </motion.div>
-        ) : (
-          /* ---------- SINGLE MACHINE VIEW ---------- */
-          <motion.div
-            className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, ease: easeSmooth }}
-          >
-            {/* Image */}
-            {machinery.img && (
-              <motion.div
-                className="lg:col-span-5 lg:sticky lg:top-40"
-                initial={{ opacity: 0, scale: 0.96, x: -24 }}
-                animate={{ opacity: 1, scale: 1, x: 0 }}
-                transition={{ duration: 0.8, ease: easeSmooth, delay: 0.15 }}
-              >
-                <div
-                  className="group relative overflow-hidden rounded-3xl border border-white/10 backdrop-blur-sm"
-                  style={{
-                    boxShadow: "0 40px 80px -30px rgba(127,29,29,0.6), inset 0 1px 0 rgba(255,255,255,0.05)",
-                  }}
-                >
-                  <img
-                    src={machinery.img}
-                    alt={machinery.name}
-                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-110"
-                  />
-                  <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0c0606]/80 via-[#0c0606]/20 to-transparent" />
-                  <div className="pointer-events-none absolute inset-0 rounded-3xl ring-1 ring-inset ring-red-500/0 transition-all duration-500 group-hover:ring-red-500/50" />
-                </div>
-              </motion.div>
-            )}
-
-            {/* Content */}
-            <motion.div
-              className="lg:col-span-7"
-              initial={{ opacity: 0, x: 24 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, ease: easeSmooth, delay: 0.3 }}
-            >
-              <div className="mb-8 flex items-center gap-5">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-red-500/15 rounded-lg blur-lg" />
-                  <span
-                    className="relative text-red-500"
-                    style={{ fontSize: "2.75rem", lineHeight: 1 }}
-                  >
-                    {machinery.icon}
-                  </span>
-                </div>
-                <div className="h-10 w-px bg-gradient-to-b from-red-600/70 via-red-600/30 to-transparent" />
-              </div>
-
-              <p
-                className="mb-6 font-semibold uppercase text-red-400"
-                style={{ fontSize: "0.8rem", letterSpacing: "0.4em" }}
-              >
-                Precision Engineering
-              </p>
-
-              <h1
-                className="mb-8 text-white"
-                style={{
-                  fontSize: "clamp(2.5rem, 5vw, 4rem)",
-                  fontWeight: 800,
-                  letterSpacing: "-0.03em",
-                  lineHeight: 1.1,
-                }}
-              >
-                {machinery.name}
-              </h1>
-
-              <p
-                className="mb-12 text-white/80"
-                style={{ fontSize: "1.1rem", lineHeight: 1.8, fontWeight: 500 }}
-              >
-                {machinery.desc}
-              </p>
-
-              {machinery.more && (
-                <motion.div
-                  className="relative rounded-2xl border border-red-500/20 bg-gradient-to-br from-red-500/5 to-red-800/5 p-8 pl-6 backdrop-blur-sm"
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.7,
-                    ease: easeSmooth,
-                    delay: 0.5,
-                  }}
-                >
-                  <div className="absolute left-0 top-6 bottom-6 w-1 rounded-full bg-gradient-to-b from-red-500 via-red-600 to-red-900" />
-                  <p
-                    className="text-white/75"
-                    style={{ fontSize: "1rem", lineHeight: 1.9, fontWeight: 500 }}
-                  >
-                    {machinery.more}
-                  </p>
-                </motion.div>
-              )}
-            </motion.div>
-          </motion.div>
-        )}
+        ) : null}
 
         {/* Additional Images Section */}
         {machinery?.additionalImages && machinery.additionalImages.length > 0 && (

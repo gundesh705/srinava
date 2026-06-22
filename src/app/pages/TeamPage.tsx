@@ -397,29 +397,6 @@ export function TeamPage() {
 
         {/* Join Us Section */}
         <div className="team-grid-wrapper">
-          <motion.div
-            className="team-card text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-white mb-4" style={{ fontSize: "1.8rem", fontWeight: 600 }}>
-              Join Our Team
-            </h2>
-            <p className="text-white/50 mb-8 max-w-2xl mx-auto" style={{ fontSize: "1rem", lineHeight: 1.7 }}>
-              We're always looking for talented professionals to join our growing team. If you're passionate about precision manufacturing and innovation, we'd love to hear from you.
-            </p>
-            <motion.button
-              className="px-8 py-3.5 border border-crimson-soft text-crimson-bright hover:border-crimson-bright hover:text-white transition-all duration-300 cursor-pointer bg-transparent rounded"
-              style={{ fontSize: "0.8rem", letterSpacing: "0.06em", fontWeight: 600 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              View Careers
-            </motion.button>
-            <div className="team-card-line" />
-          </motion.div>
         </div>
       </div>
     </div>
