@@ -114,6 +114,16 @@ body {
 }
 .scene.active { opacity: 1; pointer-events: auto; }
 
+/* Scene 1 specific left alignment */
+#scene1 {
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: clamp(1.5rem, 5vw, 3rem);
+}
+#scene1 .big {
+  text-align: left;
+}
+
 /* shared metallic headline */
 .metallic {
   font-family: 'Oswald', sans-serif;
@@ -159,10 +169,11 @@ body {
 /* ---- Scene 1 ---- */
 #scene1 .big {
   font-size: clamp(2.2rem, 8vw, 6rem);
-  max-width: 90vw;
-  word-spacing: 0.3em;
+  max-width: 95vw;
+  word-spacing: 0.2em;
   letter-spacing: 0.05em;
   display: block;
+  width: 100%;
 }
 .scene.active .reveal-1 { animation: revealUp var(--scene-dur) cubic-bezier(.16,1,.3,1) both; }
 .scene.active .reveal-2 { animation: revealUp var(--scene-dur) cubic-bezier(.16,1,.3,1) 0.25s both; }
