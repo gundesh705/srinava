@@ -591,6 +591,34 @@ export function AboutPage() {
               border-top: none;
             }
 
+            .about-content-section:nth-of-type(4) {
+              position: relative;
+              background: linear-gradient(135deg, rgba(225, 29, 46, 0.08) 0%, rgba(13, 14, 17, 0.4) 100%);
+              border: 1px solid var(--crimson-soft);
+              border-radius: 12px;
+              margin: 2rem 0;
+            }
+
+            .about-content-section:nth-of-type(4)::before {
+              content: '';
+              position: absolute;
+              inset: 0;
+              background: radial-gradient(ellipse at 50% 0%, rgba(225, 29, 46, 0.2) 0%, transparent 60%);
+              pointer-events: none;
+              border-radius: 12px;
+            }
+
+            .about-content-section:nth-of-type(4) .section-title {
+              font-size: clamp(1.6rem, 4.5vw, 2.4rem);
+              font-weight: 800;
+              background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, var(--crimson-bright) 100%);
+              -webkit-background-clip: text;
+              background-clip: text;
+              -webkit-text-fill-color: transparent;
+              position: relative;
+              z-index: 1;
+            }
+
             .section-title {
               font-size: clamp(1.5rem, 4vw, 2.2rem);
               font-weight: 600;
@@ -680,17 +708,18 @@ export function AboutPage() {
               gap: 2rem;
               max-width: 1200px;
               position: relative;
+              padding: 0.5rem 0;
             }
 
             .expertise-section::before {
               content: '';
               position: absolute;
-              inset: -1.5rem;
-              background: radial-gradient(ellipse at 20% 50%, rgba(225, 29, 46, 0.15) 0%, transparent 50%);
+              inset: -2rem -2rem -2rem -2rem;
+              background: radial-gradient(ellipse at 50% 20%, rgba(225, 29, 46, 0.25) 0%, transparent 60%);
               pointer-events: none;
               z-index: -1;
               border-radius: 12px;
-              filter: blur(30px);
+              filter: blur(40px);
             }
 
             .expertise-category {
