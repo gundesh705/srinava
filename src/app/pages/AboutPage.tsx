@@ -7,10 +7,10 @@ const cinemaStyles = `
   --steel-dark: #0a0d12;
   --steel-mid: #161b22;
   --steel-light: #2a313b;
-  --gold: #d4af37;
-  --gold-bright: #f1d27a;
+  --gold: #e74c3c;
+  --gold-bright: #ff6b6b;
   --silver: #c8ccd2;
-  --accent-red: #c81e1e;
+  --accent-red: #e74c3c;
   --text-soft: rgba(255, 255, 255, 0.65);
   --scene-dur: 0.9s;
 }
@@ -363,9 +363,22 @@ background: linear-gradient(
 }
 `;
 
+const PORTFOLIO_IMAGES = [
+  "https://cdn.builder.io/api/v1/image/assets%2Fd804a884d1294eac9363b52e819be07b%2Fa58f0b2518754815a34f6c9c83dda511?format=webp&width=800&height=1200",
+  "https://cdn.builder.io/api/v1/image/assets%2Fd804a884d1294eac9363b52e819be07b%2F0cd9153897374513b3d102c0460396f6?format=webp&width=800&height=1200",
+  "https://cdn.builder.io/api/v1/image/assets%2Fd804a884d1294eac9363b52e819be07b%2F6d043fd9dc9648f8b3b3cbcbce35d055?format=webp&width=800&height=1200",
+  "https://cdn.builder.io/api/v1/image/assets%2Fd804a884d1294eac9363b52e819be07b%2F089cfebf1ad74e988199777754af9d06?format=webp&width=800&height=1200",
+  "https://cdn.builder.io/api/v1/image/assets%2Fd804a884d1294eac9363b52e819be07b%2F39dd1c3495324ae6958d804daacecaa1?format=webp&width=800&height=1200",
+  "https://cdn.builder.io/api/v1/image/assets%2Fd804a884d1294eac9363b52e819be07b%2Fc1b326a97aad46028a396cebce2057fd?format=webp&width=800&height=1200",
+  "https://cdn.builder.io/api/v1/image/assets%2Fd804a884d1294eac9363b52e819be07b%2F2ff252bed03543b6930e3858d1671edc?format=webp&width=800&height=1200",
+  "https://cdn.builder.io/api/v1/image/assets%2Fd804a884d1294eac9363b52e819be07b%2F8102b150f4c14c8099e4f53ec000ee28?format=webp&width=800&height=1200",
+];
+
 export function AboutPage() {
   const navigate = useNavigate();
   const [introComplete, setIntroComplete] = useState(false);
+  const [galleryOpen, setGalleryOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
     (function () {
@@ -511,62 +524,394 @@ export function AboutPage() {
       )}
 
       {introComplete && (
-        <div className="px-8 md:px-16 lg:px-24 py-24">
-          {/* Back Button */}
-          <motion.button
-            onClick={() => navigate("/")}
-            className="flex items-center gap-2 text-white/40 hover:text-white/70 transition-colors duration-200 bg-transparent border-none cursor-pointer mb-12 w-fit"
-            style={{ fontSize: "0.78rem", letterSpacing: "0.08em" }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          >
-            ← Back to Home
-          </motion.button>
+        <div className="about-page-container">
+          <style>{`
+            .about-page-container {
+              background: var(--steel-dark);
+              color: white;
+            }
 
-          {/* Hero Section */}
-          <motion.div
-            className="mb-20"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1
-              className="text-white mb-8"
-              style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.1 }}
+            .about-header {
+              padding: clamp(2rem, 6vw, 4rem) clamp(1.5rem, 4vw, 3rem);
+              max-width: 100%;
+            }
+
+            .about-back-btn {
+              font-size: 0.75rem;
+              letter-spacing: 0.08em;
+              font-weight: 500;
+              color: rgba(255, 255, 255, 0.5);
+              background: transparent;
+              border: 1px solid rgba(255, 255, 255, 0.1);
+              padding: 0.5rem 1rem;
+              border-radius: 6px;
+              cursor: pointer;
+              transition: all 0.3s ease;
+              display: inline-flex;
+              align-items: center;
+              gap: 0.5rem;
+              margin-bottom: 2rem;
+            }
+
+            .about-back-btn:hover {
+              color: rgba(255, 255, 255, 0.8);
+              border-color: rgba(231, 76, 60, 0.3);
+              background: rgba(231, 76, 60, 0.05);
+            }
+
+            .about-title {
+              font-size: clamp(2.5rem, 7vw, 4.5rem);
+              font-weight: 700;
+              letter-spacing: -0.02em;
+              line-height: 1.1;
+              margin-bottom: 1.5rem;
+              background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(231, 76, 60, 0.9) 100%);
+              -webkit-background-clip: text;
+              background-clip: text;
+              -webkit-text-fill-color: transparent;
+            }
+
+            .about-subtitle {
+              font-size: 1rem;
+              color: rgba(255, 255, 255, 0.6);
+              line-height: 1.6;
+              max-width: 600px;
+            }
+
+            .about-content-section {
+              padding: clamp(2rem, 6vw, 4rem) clamp(1.5rem, 4vw, 3rem);
+              border-top: 1px solid rgba(255, 255, 255, 0.08);
+            }
+
+            .about-content-section:first-of-type {
+              border-top: none;
+            }
+
+            .section-title {
+              font-size: clamp(1.5rem, 4vw, 2.2rem);
+              font-weight: 600;
+              letter-spacing: -0.01em;
+              margin-bottom: 2rem;
+              color: white;
+              display: flex;
+              align-items: center;
+              gap: 1rem;
+            }
+
+            .section-title::before {
+              content: '';
+              width: 4px;
+              height: 2rem;
+              background: linear-gradient(180deg, var(--gold) 0%, transparent 100%);
+              border-radius: 2px;
+            }
+
+            .history-text {
+              max-width: 800px;
+              display: grid;
+              gap: 1.5rem;
+            }
+
+            .history-paragraph {
+              font-size: 1.05rem;
+              line-height: 1.8;
+              color: rgba(255, 255, 255, 0.65);
+            }
+
+            .industries-grid {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+              gap: 1.5rem;
+              max-width: 1200px;
+            }
+
+            .industry-card {
+              padding: 1.5rem;
+              border: 1px solid rgba(255, 255, 255, 0.08);
+              border-radius: 8px;
+              background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(231, 76, 60, 0.02) 100%);
+              transition: all 0.3s ease;
+              cursor: default;
+              position: relative;
+              overflow: hidden;
+            }
+
+            .industry-card::before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              height: 1px;
+              background: linear-gradient(90deg, transparent, var(--gold), transparent);
+              opacity: 0;
+              transition: opacity 0.3s ease;
+            }
+
+            .industry-card:hover {
+              border-color: rgba(231, 76, 60, 0.3);
+              background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(231, 76, 60, 0.04) 100%);
+              box-shadow: 0 0 20px rgba(231, 76, 60, 0.1);
+            }
+
+            .industry-card:hover::before {
+              opacity: 1;
+            }
+
+            .industry-icon {
+              font-size: 1.2rem;
+              color: rgba(231, 76, 60, 0.6);
+              margin-right: 0.75rem;
+            }
+
+            .industry-name {
+              font-size: 0.95rem;
+              line-height: 1.6;
+              color: rgba(255, 255, 255, 0.75);
+            }
+
+            .expertise-section {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+              gap: 2rem;
+              max-width: 1200px;
+            }
+
+            .expertise-category {
+              padding: 2rem;
+              border: 1px solid rgba(231, 76, 60, 0.15);
+              border-radius: 8px;
+              background: linear-gradient(135deg, rgba(231, 76, 60, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+              transition: all 0.3s ease;
+              position: relative;
+              overflow: hidden;
+            }
+
+            .expertise-category::before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              height: 3px;
+              background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+              opacity: 0.6;
+            }
+
+            .expertise-category::after {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background: linear-gradient(135deg, transparent 0%, rgba(231, 76, 60, 0.03) 100%);
+              pointer-events: none;
+            }
+
+            .expertise-category:hover {
+              border-color: rgba(231, 76, 60, 0.35);
+              background: linear-gradient(135deg, rgba(231, 76, 60, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%);
+              transform: translateY(-4px);
+              box-shadow: 0 12px 40px rgba(231, 76, 60, 0.15);
+            }
+
+            .expertise-title {
+              font-size: 1.2rem;
+              font-weight: 600;
+              color: white;
+              margin-bottom: 1.5rem;
+              letter-spacing: 0.5px;
+              position: relative;
+              z-index: 1;
+              display: flex;
+              align-items: center;
+              gap: 0.75rem;
+            }
+
+            .expertise-title::before {
+              content: '◆';
+              color: var(--gold);
+              font-size: 0.8rem;
+            }
+
+            .expertise-list {
+              display: flex;
+              flex-direction: column;
+              gap: 0.9rem;
+              position: relative;
+              z-index: 1;
+            }
+
+            .expertise-item {
+              font-size: 0.9rem;
+              line-height: 1.6;
+              color: rgba(255, 255, 255, 0.7);
+              display: flex;
+              align-items: flex-start;
+              gap: 0.65rem;
+              transition: color 0.3s ease;
+            }
+
+            .expertise-category:hover .expertise-item {
+              color: rgba(255, 255, 255, 0.85);
+            }
+
+            .expertise-item::before {
+              content: '→';
+              color: rgba(231, 76, 60, 0.6);
+              font-weight: 600;
+              flex-shrink: 0;
+              margin-top: 2px;
+              transition: color 0.3s ease;
+            }
+
+            .expertise-category:hover .expertise-item::before {
+              color: var(--gold);
+            }
+
+            @media (max-width: 768px) {
+              .expertise-section {
+                grid-template-columns: 1fr;
+              }
+            }
+
+            .clients-grid {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+              gap: 1rem;
+              max-width: 900px;
+            }
+
+            .client-card {
+              padding: 1.25rem;
+              border: 1px solid rgba(255, 255, 255, 0.1);
+              border-radius: 8px;
+              background: rgba(255, 255, 255, 0.03);
+              text-align: center;
+              transition: all 0.3s ease;
+              cursor: default;
+            }
+
+            .client-card:hover {
+              border-color: rgba(231, 76, 60, 0.4);
+              background: rgba(231, 76, 60, 0.08);
+              transform: translateY(-2px);
+              box-shadow: 0 4px 16px rgba(231, 76, 60, 0.1);
+            }
+
+            .client-name {
+              font-size: 0.95rem;
+              font-weight: 500;
+              color: rgba(255, 255, 255, 0.8);
+              letter-spacing: 0.3px;
+            }
+
+            .cta-section {
+              padding: clamp(3rem, 8vw, 5rem) clamp(1.5rem, 4vw, 3rem);
+              text-align: center;
+              border-top: 1px solid rgba(255, 255, 255, 0.08);
+            }
+
+            .cta-button {
+              padding: 1rem 2.5rem;
+              font-size: 0.9rem;
+              font-weight: 600;
+              letter-spacing: 0.08em;
+              color: white;
+              background: linear-gradient(135deg, rgba(231, 76, 60, 0.15) 0%, rgba(231, 76, 60, 0.05) 100%);
+              border: 1.5px solid rgba(231, 76, 60, 0.4);
+              border-radius: 8px;
+              cursor: pointer;
+              transition: all 0.3s ease;
+              position: relative;
+              overflow: hidden;
+            }
+
+            .cta-button::before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: -100%;
+              width: 100%;
+              height: 100%;
+              background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+              transition: left 0.5s ease;
+            }
+
+            .cta-button:hover {
+              border-color: rgba(231, 76, 60, 0.8);
+              box-shadow: 0 0 30px rgba(231, 76, 60, 0.2);
+              transform: translateY(-2px);
+              background: linear-gradient(135deg, rgba(231, 76, 60, 0.25) 0%, rgba(231, 76, 60, 0.08) 100%);
+            }
+
+            .cta-button:hover::before {
+              left: 100%;
+            }
+
+            @media (max-width: 768px) {
+              .industries-grid {
+                grid-template-columns: 1fr;
+              }
+
+              .clients-grid {
+                grid-template-columns: repeat(2, 1fr);
+              }
+            }
+          `}</style>
+
+          <div className="about-header">
+            <motion.button
+              onClick={() => navigate("/")}
+              className="about-back-btn"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.1 }}
             >
-              About Sri Nava Industries
-            </h1>
-          </motion.div>
+              ← Back to Home
+            </motion.button>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h1 className="about-title">About Sri Nava Industries</h1>
+              <p className="about-subtitle">
+                A Legacy of Excellence in Fabrication, Engineering, and Industrial Solutions
+              </p>
+            </motion.div>
+          </div>
 
           {/* Company History */}
           <motion.div
-            className="max-w-3xl mb-16"
+            className="about-content-section"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <p className="text-white/60 mb-6" style={{ fontSize: "1.1rem", lineHeight: 1.8 }}>
-              Sri Nava Industries was established in 1985 by Mr. K. Bhuvanendran with a vision to deliver reliable and high-quality engineering solutions. Over the past 41 years, the company has successfully completed numerous projects across various industrial sectors, earning a reputation for precision, quality, and customer satisfaction.
-            </p>
+            <div className="history-text">
+              <p className="history-paragraph">
+                Sri Nava Industries was established in 1985 by Mr. K. Bhuvanendran with a vision to deliver reliable and high-quality engineering solutions. Over the past 41 years, the company has successfully completed numerous projects across various industrial sectors, earning a reputation for precision, quality, and customer satisfaction.
+              </p>
 
-            <p className="text-white/60" style={{ fontSize: "1.1rem", lineHeight: 1.8 }}>
-              Renowned for its expertise in 2 mm and 3 mm plate fabrication, Sri Nava Industries has grown into a trusted partner for fabrication, engineering, and manufacturing services. At its peak, the organization employed over 150 skilled professionals, contributing to its legacy of excellence, innovation, and commitment to industrial growth.
-            </p>
+              <p className="history-paragraph">
+                Renowned for its expertise in 2 mm and 3 mm plate fabrication, Sri Nava Industries has grown into a trusted partner for fabrication, engineering, and manufacturing services. At its peak, the organization employed over 150 skilled professionals, contributing to its legacy of excellence, innovation, and commitment to industrial growth.
+              </p>
+            </div>
           </motion.div>
 
           {/* Industries Served */}
           <motion.div
-            className="mb-20"
+            className="about-content-section"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <h2 className="text-white mb-8" style={{ fontSize: "1.75rem", fontWeight: 600, letterSpacing: "-0.01em" }}>
-              Industries We Serve
-            </h2>
+            <h2 className="section-title">Industries We Serve</h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl">
+            <div className="industries-grid">
               {[
                 "Foundries & Metal Casting Industries",
                 "Surface Preparation & Sandblasting Operations",
@@ -579,15 +924,16 @@ export function AboutPage() {
               ].map((industry, i) => (
                 <motion.div
                   key={industry}
-                  className="flex items-start gap-3 p-4 border border-white/10 rounded-lg bg-white/5"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  className="industry-card"
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: 0.4 + i * 0.05 }}
+                  whileHover={{ y: -2 }}
                 >
-                  <div className="text-white/40 mt-1" style={{ fontSize: "1.2rem" }}>◆</div>
-                  <p className="text-white/70" style={{ fontSize: "0.95rem", lineHeight: 1.6 }}>
-                    {industry}
-                  </p>
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem" }}>
+                    <span className="industry-icon">◆</span>
+                    <p className="industry-name">{industry}</p>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -595,16 +941,14 @@ export function AboutPage() {
 
           {/* Core Expertise */}
           <motion.div
-            className="mb-20"
+            className="about-content-section"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <h2 className="text-white mb-10" style={{ fontSize: "1.75rem", fontWeight: 600, letterSpacing: "-0.01em" }}>
-              Core Expertise & Specializations
-            </h2>
+            <h2 className="section-title">Core Expertise & Specializations</h2>
 
-            <div className="space-y-12 max-w-3xl">
+            <div className="expertise-section">
               {[
                 {
                   title: "Fabrication & Engineering",
@@ -649,17 +993,15 @@ export function AboutPage() {
               ].map((expertise, idx) => (
                 <motion.div
                   key={expertise.title}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  className="expertise-category"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.5 + idx * 0.1 }}
                 >
-                  <h3 className="text-white mb-4" style={{ fontSize: "1.2rem", fontWeight: 600 }}>
-                    {expertise.title}
-                  </h3>
-                  <ul className="space-y-2">
+                  <h3 className="expertise-title">{expertise.title}</h3>
+                  <ul className="expertise-list">
                     {expertise.items.map((item) => (
-                      <li key={item} className="text-white/60 flex items-center gap-3" style={{ fontSize: "0.95rem" }}>
-                        <span className="text-white/30">→</span>
+                      <li key={item} className="expertise-item">
                         {item}
                       </li>
                     ))}
@@ -671,53 +1013,314 @@ export function AboutPage() {
 
           {/* Major Clients */}
           <motion.div
-            className="mb-20 pb-12 border-t border-white/10 pt-16"
+            className="about-content-section"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            <h2 className="text-white mb-8" style={{ fontSize: "1.75rem", fontWeight: 600, letterSpacing: "-0.01em" }}>
-              Major Clients & Business Associates
-            </h2>
+            <h2 className="section-title">Major Clients & Business Associates</h2>
 
-            <p className="text-white/60 mb-8" style={{ fontSize: "0.95rem", lineHeight: 1.8 }}>
+            <p style={{ fontSize: "0.95rem", lineHeight: 1.8, color: "rgba(255, 255, 255, 0.65)", marginBottom: "2rem" }}>
               We have proudly supported and collaborated with organizations such as:
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl">
-              {["Schwing Stetter", "Nelcast", "Southern Alloy Foundry", "Gravera Pvt. Ltd."].map((client) => (
+            <div className="clients-grid">
+              {["Schwing Stetter", "Nelcast", "Southern Alloy Foundry", "Gravera Pvt. Ltd."].map((client, i) => (
                 <motion.div
                   key={client}
-                  className="p-4 border border-white/15 rounded-lg bg-white/5 hover:border-white/30 hover:bg-white/8 transition-all duration-300"
-                  whileHover={{ y: -2 }}
+                  className="client-card"
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.6 + i * 0.08 }}
+                  whileHover={{ y: -4 }}
                 >
-                  <p className="text-white/70" style={{ fontSize: "0.95rem" }}>
-                    {client}
-                  </p>
+                  <p className="client-name">{client}</p>
                 </motion.div>
               ))}
             </div>
 
-            <p className="text-white/50 mt-6" style={{ fontSize: "0.9rem" }}>
+            <p style={{ fontSize: "0.9rem", color: "rgba(255, 255, 255, 0.5)", marginTop: "1.5rem" }}>
               Plus various Engineering Contractors and Industrial Suppliers
             </p>
           </motion.div>
 
-          {/* CTA */}
+          {/* CTA Section */}
           <motion.div
-            className="text-center"
+            className="cta-section"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.7 }}
           >
+            <h2 className="section-title" style={{ justifyContent: "center" }}>Ready to Partner With Us</h2>
+            <p style={{ fontSize: "1rem", color: "rgba(255, 255, 255, 0.6)", marginBottom: "2rem", maxWidth: "500px", margin: "0 auto 2rem" }}>
+              Discover how Sri Nava Industries can deliver excellence to your manufacturing needs
+            </p>
             <button
-              onClick={() => navigate("/work")}
-              className="px-8 py-3.5 border border-white/20 text-white/70 hover:border-white/50 hover:text-white transition-all duration-300 hover:scale-105 cursor-pointer bg-transparent rounded-full"
-              style={{ fontSize: "0.8rem", letterSpacing: "0.06em" }}
+              onClick={() => setGalleryOpen(true)}
+              className="cta-button"
             >
-              Explore Our Work
+              Fabrication Portfolio
             </button>
           </motion.div>
+
+          {/* Gallery Modal */}
+          {galleryOpen && (
+            <div className="gallery-overlay" onClick={() => setGalleryOpen(false)}>
+              <style>{`
+                .gallery-overlay {
+                  position: fixed;
+                  inset: 0;
+                  background: rgba(10, 10, 10, 0.95);
+                  backdrop-filter: blur(8px);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  z-index: 1000;
+                  padding: 1rem;
+                  animation: fadeIn 0.3s ease-out;
+                }
+
+                @keyframes fadeIn {
+                  from { opacity: 0; }
+                  to { opacity: 1; }
+                }
+
+                .gallery-container {
+                  position: relative;
+                  max-width: 900px;
+                  width: 100%;
+                  max-height: 90vh;
+                  display: flex;
+                  flex-direction: column;
+                  background: linear-gradient(135deg, rgba(30, 30, 40, 0.8), rgba(20, 20, 30, 0.8));
+                  border: 1px solid rgba(231, 76, 60, 0.2);
+                  border-radius: 12px;
+                  overflow: hidden;
+                  animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                }
+
+                @keyframes slideUp {
+                  from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                  }
+                  to {
+                    opacity: 1;
+                    transform: translateY(0);
+                  }
+                }
+
+                .gallery-image-wrapper {
+                  position: relative;
+                  flex: 1;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  overflow: hidden;
+                  background: linear-gradient(135deg, rgba(10, 10, 15, 0.5), rgba(20, 30, 40, 0.5));
+                  min-height: 500px;
+                }
+
+                .gallery-image {
+                  max-width: 100%;
+                  max-height: 100%;
+                  object-fit: contain;
+                  animation: zoomIn 0.4s ease-out;
+                }
+
+                @keyframes zoomIn {
+                  from {
+                    opacity: 0;
+                    transform: scale(0.95);
+                  }
+                  to {
+                    opacity: 1;
+                    transform: scale(1);
+                  }
+                }
+
+                .gallery-controls {
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  padding: 1.5rem;
+                  border-top: 1px solid rgba(231, 76, 60, 0.1);
+                  background: rgba(15, 15, 20, 0.5);
+                  gap: 1.5rem;
+                }
+
+                .gallery-button {
+                  background: linear-gradient(135deg, rgba(231, 76, 60, 0.15) 0%, rgba(231, 76, 60, 0.05) 100%);
+                  border: 1px solid rgba(231, 76, 60, 0.3);
+                  color: white;
+                  padding: 0.75rem 1.5rem;
+                  border-radius: 6px;
+                  cursor: pointer;
+                  font-size: 0.9rem;
+                  font-weight: 500;
+                  transition: all 0.3s ease;
+                  letter-spacing: 0.5px;
+                }
+
+                .gallery-button:hover {
+                  border-color: rgba(231, 76, 60, 0.6);
+                  background: linear-gradient(135deg, rgba(231, 76, 60, 0.25) 0%, rgba(231, 76, 60, 0.08) 100%);
+                  box-shadow: 0 0 20px rgba(231, 76, 60, 0.15);
+                }
+
+                .gallery-button:disabled {
+                  opacity: 0.4;
+                  cursor: not-allowed;
+                }
+
+                .gallery-counter {
+                  color: rgba(255, 255, 255, 0.7);
+                  font-size: 0.9rem;
+                  font-weight: 500;
+                  letter-spacing: 0.5px;
+                  min-width: 80px;
+                  text-align: center;
+                }
+
+                .gallery-thumbnails {
+                  display: flex;
+                  gap: 0.75rem;
+                  padding: 1rem;
+                  background: rgba(15, 15, 20, 0.7);
+                  overflow-x: auto;
+                  border-top: 1px solid rgba(231, 76, 60, 0.1);
+                }
+
+                .gallery-thumbnail {
+                  flex-shrink: 0;
+                  width: 60px;
+                  height: 80px;
+                  border-radius: 6px;
+                  border: 2px solid rgba(231, 76, 60, 0.2);
+                  cursor: pointer;
+                  overflow: hidden;
+                  transition: all 0.3s ease;
+                  background: rgba(255, 255, 255, 0.05);
+                }
+
+                .gallery-thumbnail:hover {
+                  border-color: rgba(231, 76, 60, 0.5);
+                  transform: scale(1.05);
+                }
+
+                .gallery-thumbnail.active {
+                  border-color: rgba(231, 76, 60, 0.8);
+                  box-shadow: 0 0 12px rgba(231, 76, 60, 0.3);
+                }
+
+                .gallery-thumbnail img {
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                }
+
+                .close-gallery {
+                  position: absolute;
+                  top: 1rem;
+                  right: 1rem;
+                  background: rgba(0, 0, 0, 0.6);
+                  border: 1px solid rgba(231, 76, 60, 0.3);
+                  color: white;
+                  width: 40px;
+                  height: 40px;
+                  border-radius: 6px;
+                  cursor: pointer;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font-size: 1.5rem;
+                  transition: all 0.3s ease;
+                  z-index: 10;
+                }
+
+                .close-gallery:hover {
+                  background: rgba(0, 0, 0, 0.8);
+                  border-color: rgba(231, 76, 60, 0.8);
+                }
+
+                @media (max-width: 768px) {
+                  .gallery-container {
+                    max-height: 95vh;
+                    border-radius: 8px;
+                  }
+
+                  .gallery-image-wrapper {
+                    min-height: 350px;
+                  }
+
+                  .gallery-controls {
+                    flex-wrap: wrap;
+                    padding: 1rem;
+                  }
+
+                  .gallery-button {
+                    padding: 0.65rem 1.2rem;
+                    font-size: 0.85rem;
+                  }
+                }
+              `}</style>
+
+              <div className="gallery-container" onClick={(e) => e.stopPropagation()}>
+                <button
+                  className="close-gallery"
+                  onClick={() => setGalleryOpen(false)}
+                >
+                  ✕
+                </button>
+
+                <div className="gallery-image-wrapper">
+                  <img
+                    src={PORTFOLIO_IMAGES[currentImageIndex]}
+                    alt={`Portfolio item ${currentImageIndex + 1}`}
+                    className="gallery-image"
+                  />
+                </div>
+
+                <div className="gallery-thumbnails">
+                  {PORTFOLIO_IMAGES.map((img, idx) => (
+                    <button
+                      key={idx}
+                      className={`gallery-thumbnail ${idx === currentImageIndex ? "active" : ""}`}
+                      onClick={() => setCurrentImageIndex(idx)}
+                    >
+                      <img src={img} alt={`Thumbnail ${idx + 1}`} />
+                    </button>
+                  ))}
+                </div>
+
+                <div className="gallery-controls">
+                  <button
+                    className="gallery-button"
+                    onClick={() =>
+                      setCurrentImageIndex((prev) =>
+                        prev === 0 ? PORTFOLIO_IMAGES.length - 1 : prev - 1
+                      )
+                    }
+                  >
+                    ← Previous
+                  </button>
+                  <div className="gallery-counter">
+                    {currentImageIndex + 1} / {PORTFOLIO_IMAGES.length}
+                  </div>
+                  <button
+                    className="gallery-button"
+                    onClick={() =>
+                      setCurrentImageIndex((prev) =>
+                        prev === PORTFOLIO_IMAGES.length - 1 ? 0 : prev + 1
+                      )
+                    }
+                  >
+                    Next →
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>

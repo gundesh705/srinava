@@ -82,42 +82,8 @@ export function WorkPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/80" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-transparent" />
 
-        {/* Nav */}
-        <motion.nav
-          className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-8 py-6"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-        >
-          <div className="flex items-center gap-8 ml-auto">
-            {["Work", "Facilities", "Team", "About", "Contact"].map((item) => (
-              <button
-                key={item}
-                onClick={() => {
-                  if (item === "Facilities") navigate("/facilities");
-                  else if (item === "Team") navigate("/team");
-                }}
-                className={`bg-transparent border-none cursor-pointer transition-colors duration-200 ${item === "Work" ? "text-white" : "text-white/40 hover:text-white"}`}
-                style={{ fontSize: "0.8rem", letterSpacing: "0.1em" }}
-              >
-                {item}
-              </button>
-            ))}
-          </div>
-        </motion.nav>
-
         {/* Hero text */}
         <div className="absolute inset-0 flex flex-col justify-end pb-16 px-8 md:px-16 lg:px-24 z-10">
-          <motion.button
-            onClick={() => navigate("/")}
-            className="flex items-center gap-2 text-white/40 hover:text-white/70 transition-colors duration-200 bg-transparent border-none cursor-pointer mb-8 w-fit"
-            style={{ fontSize: "0.78rem", letterSpacing: "0.08em" }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3 }}
-          >
-            ← Back to Home
-          </motion.button>
 
           <motion.div
             className="flex items-center gap-3 mb-4"

@@ -6,6 +6,7 @@ import { MachineryDetailPage } from "./pages/MachineryDetailPage";
 import { FacilitiesPage } from "./pages/FacilitiesPage";
 import { AboutPage } from "./pages/AboutPage";
 import { TeamPage } from "./pages/TeamPage";
+import { ContactPage } from "./pages/ContactPage";
 
 export const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ export const router = createBrowserRouter([
       { path: "facilities", Component: FacilitiesPage },
       { path: "about", Component: AboutPage },
       { path: "team", Component: TeamPage },
+      { path: "contact", Component: ContactPage },
     ],
   },
 ]);
