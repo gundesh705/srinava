@@ -60,176 +60,400 @@ const machines = [
   },
 ];
 
-const facilities = [
-  {
-    title: "Fabrication Bay",
-    tag: "Production",
-    img: "[images.unsplash.com](https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80)",
-    desc: "A dedicated production area for structural fabrication and assembly.",
-    more: "This bay supports heavy-duty fabrication workflows with organized equipment placement, material flow planning, and safe working clearances.",
-  },
-  {
-    title: "Storage Area",
-    tag: "Logistics",
-    img: "[images.unsplash.com](https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&q=80)",
-    desc: "Secure storage for raw materials, components, and finished goods.",
-    more: "The storage zone is arranged for efficient loading, unloading, inventory access, and reduced material handling time.",
-  },
-];
-
 export function WorkPage() {
   const navigate = useNavigate();
   const [expanded, setExpanded] = useState<number | null>(null);
 
   return (
-    <div className="min-h-screen bg-[#050506]">
+    <div className="work-page-wrapper">
       <style>{`
-        .work-page-glow {
+        .work-page-wrapper {
+          --steel-950: #050506;
+          --steel-900: #08090b;
+          --steel-800: #0d0e11;
+          --steel-700: #15171b;
+          --crimson: #e11d2e;
+          --crimson-bright: #ff3340;
+          --crimson-deep: #8f0f1a;
+          --crimson-soft: rgba(225, 29, 46, 0.5);
+          --crimson-faint: rgba(225, 29, 46, 0.14);
+          --ember: #ff7a2c;
+          --line: rgba(255, 255, 255, 0.08);
+          --line-strong: rgba(255, 255, 255, 0.14);
+          --text: rgba(255, 255, 255, 0.94);
+          --text-dim: rgba(255, 255, 255, 0.56);
+          --text-faint: rgba(255, 255, 255, 0.34);
+
+          position: relative;
+          min-height: 100vh;
+          background: radial-gradient(140% 90% at 50% -10%, #141416 0%, var(--steel-950) 60%);
+          color: var(--text);
+          overflow: hidden;
+          font-family: inherit;
+          -webkit-font-smoothing: antialiased;
+        }
+
+        .bg-grid {
           position: absolute;
-          top: -15%;
-          left: 50%;
-          width: 70vw;
-          height: 60vh;
-          transform: translateX(-50%);
-          background: radial-gradient(ellipse at center, rgba(225, 29, 46, 0.2) 0%, transparent 70%);
-          filter: blur(60px);
+          inset: 0;
+          background-image:
+            linear-gradient(rgba(225,29,46,0.055) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(225,29,46,0.055) 1px, transparent 1px);
+          background-size: 54px 54px;
+          mask-image: radial-gradient(circle at 50% 25%, black 0%, transparent 78%);
+          animation: gridDrift 32s linear infinite;
           pointer-events: none;
-          z-index: 0;
+        }
+
+        @keyframes gridDrift {
+          from { background-position: 0 0, 0 0; }
+          to   { background-position: 54px 54px, 54px 54px; }
+        }
+
+        .bg-glow {
+          position: absolute;
+          top: -12%;
+          left: 50%;
+          width: 75vw;
+          height: 65vh;
+          transform: translateX(-50%);
+          background: radial-gradient(ellipse at center, rgba(225,29,46,0.18) 0%, transparent 70%);
+          filter: blur(50px);
+          pointer-events: none;
+          animation: pulseGlow 8s ease-in-out infinite;
+        }
+
+        .bg-vignette {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(120% 120% at 50% 0%, transparent 55%, rgba(0,0,0,0.55) 100%);
+          pointer-events: none;
+        }
+
+        @keyframes pulseGlow {
+          0%, 100% { opacity: 0.55; }
+          50%      { opacity: 1; }
+        }
+
+        .scan-beam {
+          position: absolute;
+          left: 0;
+          right: 0;
+          height: 2px;
+          background: linear-gradient(90deg, transparent, var(--crimson-bright), transparent);
+          opacity: 0.5;
+          animation: scan 7.5s ease-in-out infinite;
+          pointer-events: none;
+        }
+
+        @keyframes scan {
+          0%   { top: 6%;  opacity: 0; }
+          15%  { opacity: 0.55; }
+          85%  { opacity: 0.55; }
+          100% { top: 96%; opacity: 0; }
+        }
+
+        .spark {
+          position: absolute;
+          width: 3px;
+          height: 3px;
+          border-radius: 50%;
+          background: var(--ember);
+          box-shadow: 0 0 8px 2px rgba(255, 122, 44, 0.7);
+          pointer-events: none;
+          animation: rise linear infinite;
+        }
+
+        @keyframes rise {
+          0%   { transform: translateY(0) scale(1); opacity: 0; }
+          10%  { opacity: 1; }
+          90%  { opacity: 0.8; }
+          100% { transform: translateY(-92vh) scale(0.2); opacity: 0; }
+        }
+
+        .work-inner { position: relative; z-index: 2; }
+
+        .work-hero {
+          position: relative;
+          height: 50vh;
+          overflow: hidden;
+        }
+
+        .work-hero-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .work-hero-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.8) 100%);
+          pointer-events: none;
+        }
+
+        .work-hero-content {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
+          padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 4vw, 3rem);
+          z-index: 10;
+        }
+
+        .work-eyebrow {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.7rem;
+          font-size: 0.72rem;
+          letter-spacing: 0.3em;
+          text-transform: uppercase;
+          color: var(--crimson-bright);
+          font-weight: 700;
+          margin-bottom: 1.4rem;
+          width: fit-content;
+        }
+
+        .work-eyebrow::before {
+          content: "";
+          width: 36px;
+          height: 1px;
+          background: linear-gradient(90deg, var(--crimson-bright), transparent);
+        }
+
+        .work-title {
+          font-size: clamp(2.5rem, 6vw, 5rem);
+          font-weight: 800;
+          letter-spacing: -0.035em;
+          line-height: 1.05;
+          margin-bottom: 1.4rem;
+          color: #fff;
+        }
+
+        .work-subtitle {
+          font-size: clamp(0.9rem, 2vw, 1.1rem);
+          color: var(--text-dim);
+          line-height: 1.75;
+          max-width: 640px;
+        }
+
+        .work-section {
+          padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 4vw, 3rem);
+          max-width: 1280px;
+          margin: 0 auto;
+        }
+
+        .section-header {
+          margin-bottom: 3rem;
+        }
+
+        .section-eyebrow {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.7rem;
+          font-size: 0.72rem;
+          letter-spacing: 0.3em;
+          text-transform: uppercase;
+          color: var(--crimson-bright);
+          font-weight: 700;
+          margin-bottom: 1.4rem;
+        }
+
+        .section-eyebrow::before {
+          content: "";
+          width: 36px;
+          height: 1px;
+          background: linear-gradient(90deg, var(--crimson-bright), transparent);
+        }
+
+        .section-title {
+          font-size: clamp(2rem, 4vw, 3rem);
+          font-weight: 800;
+          letter-spacing: -0.035em;
+          line-height: 1.1;
+          background: linear-gradient(135deg, #ffffff 0%, #f2f2f2 42%, var(--crimson-bright) 100%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+        .machinery-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 1.5rem;
+          max-w-4xl;
+        }
+
+        .machinery-card {
+          position: relative;
+          padding: 2rem;
+          border: 1px solid var(--line);
+          border-radius: 14px;
+          background: linear-gradient(135deg, rgba(225,29,46,0.08) 0%, rgba(13,14,17,0.65) 55%), rgba(13,14,17,0.88);
+          transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+          min-height: 220px;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          cursor: pointer;
+          overflow: hidden;
+        }
+
+        .machinery-card::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, var(--crimson-bright), transparent);
+        }
+
+        .machinery-card:hover {
+          border-color: var(--crimson-soft);
+          background: linear-gradient(135deg, rgba(225,29,46,0.14) 0%, rgba(13,14,17,0.65) 55%), rgba(13,14,17,0.92);
+          transform: translateY(-6px);
+          box-shadow: 0 16px 38px -10px rgba(225,29,46,0.45);
+        }
+
+        .machinery-icon {
+          font-size: 2.5rem;
+          color: var(--crimson);
+          margin-bottom: 1rem;
+          transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .machinery-card:hover .machinery-icon {
+          color: var(--crimson-bright);
+          transform: scale(1.2) rotate(15deg);
+        }
+
+        .machinery-name {
+          font-size: 1.25rem;
+          font-weight: 700;
+          color: #fff;
+          margin-bottom: 0.5rem;
+          letter-spacing: -0.01em;
+        }
+
+        .machinery-bottom-line {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 2px;
+          background: linear-gradient(90deg, transparent, var(--crimson-bright), transparent);
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+
+        .machinery-card:hover .machinery-bottom-line {
+          opacity: 1;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .bg-grid, .bg-glow, .scan-beam, .spark { animation: none; }
         }
       `}</style>
-      <div className="work-page-glow" />
-      <div className="relative w-full overflow-hidden" style={{ height: "50vh" }}>
-        <img
-          src={headerImg}
-          alt="Our facilities"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/80" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-transparent" />
 
-        <div className="absolute inset-0 flex flex-col justify-end pb-16 px-8 md:px-16 lg:px-24 z-10">
-          <motion.div
-            className="flex items-center gap-3 mb-4"
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.35 }}
-          >
-            <div className="w-8 h-px bg-white/40" />
-            <span
-              className="text-white/50 uppercase"
-              style={{ fontSize: "0.7rem", letterSpacing: "0.25em" }}
+      {/* Animated backdrop */}
+      <div className="bg-grid" />
+      <div className="bg-glow" />
+      <div className="scan-beam" />
+      <div className="bg-vignette" />
+      {[...Array(7)].map((_, i) => (
+        <span
+          key={i}
+          className="spark"
+          style={{
+            left: `${8 + i * 13}%`,
+            bottom: "-10px",
+            animationDuration: `${5 + (i % 4) * 1.5}s`,
+            animationDelay: `${i * 0.9}s`,
+          }}
+        />
+      ))}
+
+      <div className="work-inner">
+        {/* Hero Section */}
+        <motion.div
+          className="work-hero"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+        >
+          <img src={headerImg} alt="Our facilities" className="work-hero-image" />
+          <div className="work-hero-overlay" />
+          <div className="work-hero-content">
+            <motion.span
+              className="work-eyebrow"
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
             >
               Our Facilities
-            </span>
-          </motion.div>
-
-          <motion.h1
-            className="text-white mb-4"
-            style={{
-              fontSize: "clamp(2.5rem, 6vw, 5rem)",
-              fontWeight: 700,
-              letterSpacing: "-0.02em",
-              lineHeight: 1.05,
-            }}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          >
-            Built to Perform.<br />
-            <span style={{ color: "rgba(255,255,255,0.45)" }}>Ready for Any Scale.</span>
-          </motion.h1>
-
-          <motion.p
-            className="text-white/40 max-w-lg"
-            style={{ fontSize: "0.95rem", lineHeight: 1.7 }}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.6 }}
-          >
-            From precision cutting to heavy lifting - our facility is equipped with
-            industrial-grade machinery to handle every stage of fabrication in-house.
-          </motion.p>
-        </div>
-      </div>
-
-      <div className="px-8 md:px-16 lg:px-24 py-24">
-        <motion.div
-          className="mb-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-8 h-px bg-red-500/60" />
-            <span
-              className="text-red-500/80 uppercase"
-              style={{ fontSize: "0.7rem", letterSpacing: "0.25em", fontWeight: 600 }}
+            </motion.span>
+            <motion.h1
+              className="work-title"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
             >
-              Equipment & Technology
-            </span>
+              Built to Perform.
+              <br />
+              <span style={{ color: "rgba(255,255,255,0.6)" }}>Ready for Any Scale.</span>
+            </motion.h1>
+            <motion.p
+              className="work-subtitle"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.4 }}
+            >
+              From precision cutting to heavy lifting - our facility is equipped with industrial-grade machinery to handle every stage of fabrication in-house.
+            </motion.p>
           </div>
-
-          <h2
-            className="text-white"
-            style={{
-              fontSize: "clamp(2rem, 4vw, 3rem)",
-              fontWeight: 700,
-              letterSpacing: "-0.02em",
-              lineHeight: 1.1,
-              background: "linear-gradient(135deg, #ffffff 0%, #ffffff 60%, #ff3340 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}
-          >
-            Our Machinery
-          </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl">
-          {machines.map((m, i) => (
-            <motion.div
-              key={m.name}
-              className="group relative border border-red-500/20 bg-gradient-to-br from-red-500/5 to-red-500/0 p-8 hover:border-red-500/60 hover:bg-red-500/8 hover:shadow-lg hover:shadow-red-500/10 cursor-pointer overflow-hidden rounded-sm"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={{ y: -8, scale: 1.02 }}
-              onClick={() => navigate(`/work/machinery/${encodeURIComponent(m.name)}`)}
-              style={{ minHeight: "200px", display: "flex", flexDirection: "column", justifyContent: "center" }}
-            >
+        {/* Machinery Section */}
+        <div className="work-section">
+          <motion.div
+            className="section-header"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6 }}
+          >
+            <span className="section-eyebrow">Equipment & Technology</span>
+            <h2 className="section-title">Our Machinery</h2>
+          </motion.div>
+
+          <div className="machinery-grid">
+            {machines.map((m, i) => (
               <motion.div
-                className="text-red-500/40 mb-6 group-hover:text-red-400 transition-colors duration-300"
-                style={{ fontSize: "2.5rem" }}
-                whileHover={{ rotate: 15, scale: 1.15 }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                key={m.name}
+                className="machinery-card"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ y: -8 }}
+                onClick={() => navigate(`/work/machinery/${encodeURIComponent(m.name)}`)}
               >
-                {m.icon}
+                <motion.div
+                  className="machinery-icon"
+                  whileHover={{ rotate: 15, scale: 1.2 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                >
+                  {m.icon}
+                </motion.div>
+                <h3 className="machinery-name">{m.name}</h3>
+                <div className="machinery-bottom-line" />
               </motion.div>
-
-              <motion.h3
-                className="text-white"
-                style={{ fontSize: "1.25rem", fontWeight: 600, letterSpacing: "-0.01em", lineHeight: 1.3 }}
-                whileHover={{ x: 4 }}
-                transition={{ duration: 0.3 }}
-              >
-                {m.name}
-              </motion.h3>
-
-              <motion.div
-                className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500/0 via-red-500/60 to-red-500/0"
-                initial={{ scaleX: 0, opacity: 0 }}
-                whileHover={{ scaleX: 1, opacity: 1 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
-                style={{ originX: 0.5 }}
-              />
-            </motion.div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
-
     </div>
   );
 }
