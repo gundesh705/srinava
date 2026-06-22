@@ -511,62 +511,341 @@ export function AboutPage() {
       )}
 
       {introComplete && (
-        <div className="px-8 md:px-16 lg:px-24 py-24">
-          {/* Back Button */}
-          <motion.button
-            onClick={() => navigate("/")}
-            className="flex items-center gap-2 text-white/40 hover:text-white/70 transition-colors duration-200 bg-transparent border-none cursor-pointer mb-12 w-fit"
-            style={{ fontSize: "0.78rem", letterSpacing: "0.08em" }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-          >
-            ← Back to Home
-          </motion.button>
+        <div className="about-page-container">
+          <style>{`
+            .about-page-container {
+              background: var(--steel-dark);
+              color: white;
+            }
 
-          {/* Hero Section */}
-          <motion.div
-            className="mb-20"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h1
-              className="text-white mb-8"
-              style={{ fontSize: "clamp(2.5rem, 5vw, 4rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.1 }}
+            .about-header {
+              padding: clamp(2rem, 6vw, 4rem) clamp(1.5rem, 4vw, 3rem);
+              max-width: 100%;
+            }
+
+            .about-back-btn {
+              font-size: 0.75rem;
+              letter-spacing: 0.08em;
+              font-weight: 500;
+              color: rgba(255, 255, 255, 0.5);
+              background: transparent;
+              border: 1px solid rgba(255, 255, 255, 0.1);
+              padding: 0.5rem 1rem;
+              border-radius: 6px;
+              cursor: pointer;
+              transition: all 0.3s ease;
+              display: inline-flex;
+              align-items: center;
+              gap: 0.5rem;
+              margin-bottom: 2rem;
+            }
+
+            .about-back-btn:hover {
+              color: rgba(255, 255, 255, 0.8);
+              border-color: rgba(212, 175, 55, 0.3);
+              background: rgba(212, 175, 55, 0.05);
+            }
+
+            .about-title {
+              font-size: clamp(2.5rem, 7vw, 4.5rem);
+              font-weight: 700;
+              letter-spacing: -0.02em;
+              line-height: 1.1;
+              margin-bottom: 1.5rem;
+              background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(212, 175, 55, 0.9) 100%);
+              -webkit-background-clip: text;
+              background-clip: text;
+              -webkit-text-fill-color: transparent;
+            }
+
+            .about-subtitle {
+              font-size: 1rem;
+              color: rgba(255, 255, 255, 0.6);
+              line-height: 1.6;
+              max-width: 600px;
+            }
+
+            .about-content-section {
+              padding: clamp(2rem, 6vw, 4rem) clamp(1.5rem, 4vw, 3rem);
+              border-top: 1px solid rgba(255, 255, 255, 0.08);
+            }
+
+            .about-content-section:first-of-type {
+              border-top: none;
+            }
+
+            .section-title {
+              font-size: clamp(1.5rem, 4vw, 2.2rem);
+              font-weight: 600;
+              letter-spacing: -0.01em;
+              margin-bottom: 2rem;
+              color: white;
+              display: flex;
+              align-items: center;
+              gap: 1rem;
+            }
+
+            .section-title::before {
+              content: '';
+              width: 4px;
+              height: 2rem;
+              background: linear-gradient(180deg, var(--gold) 0%, transparent 100%);
+              border-radius: 2px;
+            }
+
+            .history-text {
+              max-width: 800px;
+              display: grid;
+              gap: 1.5rem;
+            }
+
+            .history-paragraph {
+              font-size: 1.05rem;
+              line-height: 1.8;
+              color: rgba(255, 255, 255, 0.65);
+            }
+
+            .industries-grid {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+              gap: 1.5rem;
+              max-width: 1200px;
+            }
+
+            .industry-card {
+              padding: 1.5rem;
+              border: 1px solid rgba(255, 255, 255, 0.08);
+              border-radius: 8px;
+              background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(212, 175, 55, 0.02) 100%);
+              transition: all 0.3s ease;
+              cursor: default;
+              position: relative;
+              overflow: hidden;
+            }
+
+            .industry-card::before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              right: 0;
+              height: 1px;
+              background: linear-gradient(90deg, transparent, var(--gold), transparent);
+              opacity: 0;
+              transition: opacity 0.3s ease;
+            }
+
+            .industry-card:hover {
+              border-color: rgba(212, 175, 55, 0.3);
+              background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(212, 175, 55, 0.04) 100%);
+              box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+            }
+
+            .industry-card:hover::before {
+              opacity: 1;
+            }
+
+            .industry-icon {
+              font-size: 1.2rem;
+              color: rgba(212, 175, 55, 0.6);
+              margin-right: 0.75rem;
+            }
+
+            .industry-name {
+              font-size: 0.95rem;
+              line-height: 1.6;
+              color: rgba(255, 255, 255, 0.75);
+            }
+
+            .expertise-section {
+              display: grid;
+              gap: 3rem;
+              max-width: 900px;
+            }
+
+            .expertise-category {
+              position: relative;
+              padding-left: 1.5rem;
+            }
+
+            .expertise-category::before {
+              content: '';
+              position: absolute;
+              left: 0;
+              top: 0;
+              width: 3px;
+              height: 100%;
+              background: linear-gradient(180deg, var(--gold) 0%, transparent 100%);
+              border-radius: 2px;
+            }
+
+            .expertise-title {
+              font-size: 1.15rem;
+              font-weight: 600;
+              color: white;
+              margin-bottom: 1rem;
+              letter-spacing: 0.5px;
+            }
+
+            .expertise-list {
+              display: flex;
+              flex-direction: column;
+              gap: 0.75rem;
+            }
+
+            .expertise-item {
+              font-size: 0.95rem;
+              line-height: 1.6;
+              color: rgba(255, 255, 255, 0.65);
+              display: flex;
+              align-items: flex-start;
+              gap: 0.75rem;
+            }
+
+            .expertise-item::before {
+              content: '→';
+              color: rgba(212, 175, 55, 0.5);
+              font-weight: 600;
+              flex-shrink: 0;
+              margin-top: 2px;
+            }
+
+            .clients-grid {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+              gap: 1rem;
+              max-width: 900px;
+            }
+
+            .client-card {
+              padding: 1.25rem;
+              border: 1px solid rgba(255, 255, 255, 0.1);
+              border-radius: 8px;
+              background: rgba(255, 255, 255, 0.03);
+              text-align: center;
+              transition: all 0.3s ease;
+              cursor: default;
+            }
+
+            .client-card:hover {
+              border-color: rgba(212, 175, 55, 0.4);
+              background: rgba(212, 175, 55, 0.08);
+              transform: translateY(-2px);
+              box-shadow: 0 4px 16px rgba(212, 175, 55, 0.1);
+            }
+
+            .client-name {
+              font-size: 0.95rem;
+              font-weight: 500;
+              color: rgba(255, 255, 255, 0.8);
+              letter-spacing: 0.3px;
+            }
+
+            .cta-section {
+              padding: clamp(3rem, 8vw, 5rem) clamp(1.5rem, 4vw, 3rem);
+              text-align: center;
+              border-top: 1px solid rgba(255, 255, 255, 0.08);
+            }
+
+            .cta-button {
+              padding: 1rem 2.5rem;
+              font-size: 0.9rem;
+              font-weight: 600;
+              letter-spacing: 0.08em;
+              color: white;
+              background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.05) 100%);
+              border: 1.5px solid rgba(212, 175, 55, 0.4);
+              border-radius: 8px;
+              cursor: pointer;
+              transition: all 0.3s ease;
+              position: relative;
+              overflow: hidden;
+            }
+
+            .cta-button::before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: -100%;
+              width: 100%;
+              height: 100%;
+              background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+              transition: left 0.5s ease;
+            }
+
+            .cta-button:hover {
+              border-color: rgba(212, 175, 55, 0.8);
+              box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+              transform: translateY(-2px);
+              background: linear-gradient(135deg, rgba(212, 175, 55, 0.25) 0%, rgba(212, 175, 55, 0.08) 100%);
+            }
+
+            .cta-button:hover::before {
+              left: 100%;
+            }
+
+            @media (max-width: 768px) {
+              .industries-grid {
+                grid-template-columns: 1fr;
+              }
+
+              .clients-grid {
+                grid-template-columns: repeat(2, 1fr);
+              }
+            }
+          `}</style>
+
+          <div className="about-header">
+            <motion.button
+              onClick={() => navigate("/")}
+              className="about-back-btn"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.1 }}
             >
-              About Sri Nava Industries
-            </h1>
-          </motion.div>
+              ← Back to Home
+            </motion.button>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h1 className="about-title">About Sri Nava Industries</h1>
+              <p className="about-subtitle">
+                A Legacy of Excellence in Fabrication, Engineering, and Industrial Solutions
+              </p>
+            </motion.div>
+          </div>
 
           {/* Company History */}
           <motion.div
-            className="max-w-3xl mb-16"
+            className="about-content-section"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <p className="text-white/60 mb-6" style={{ fontSize: "1.1rem", lineHeight: 1.8 }}>
-              Sri Nava Industries was established in 1985 by Mr. K. Bhuvanendran with a vision to deliver reliable and high-quality engineering solutions. Over the past 41 years, the company has successfully completed numerous projects across various industrial sectors, earning a reputation for precision, quality, and customer satisfaction.
-            </p>
+            <div className="history-text">
+              <p className="history-paragraph">
+                Sri Nava Industries was established in 1985 by Mr. K. Bhuvanendran with a vision to deliver reliable and high-quality engineering solutions. Over the past 41 years, the company has successfully completed numerous projects across various industrial sectors, earning a reputation for precision, quality, and customer satisfaction.
+              </p>
 
-            <p className="text-white/60" style={{ fontSize: "1.1rem", lineHeight: 1.8 }}>
-              Renowned for its expertise in 2 mm and 3 mm plate fabrication, Sri Nava Industries has grown into a trusted partner for fabrication, engineering, and manufacturing services. At its peak, the organization employed over 150 skilled professionals, contributing to its legacy of excellence, innovation, and commitment to industrial growth.
-            </p>
+              <p className="history-paragraph">
+                Renowned for its expertise in 2 mm and 3 mm plate fabrication, Sri Nava Industries has grown into a trusted partner for fabrication, engineering, and manufacturing services. At its peak, the organization employed over 150 skilled professionals, contributing to its legacy of excellence, innovation, and commitment to industrial growth.
+              </p>
+            </div>
           </motion.div>
 
           {/* Industries Served */}
           <motion.div
-            className="mb-20"
+            className="about-content-section"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <h2 className="text-white mb-8" style={{ fontSize: "1.75rem", fontWeight: 600, letterSpacing: "-0.01em" }}>
-              Industries We Serve
-            </h2>
+            <h2 className="section-title">Industries We Serve</h2>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl">
+            <div className="industries-grid">
               {[
                 "Foundries & Metal Casting Industries",
                 "Surface Preparation & Sandblasting Operations",
@@ -579,15 +858,16 @@ export function AboutPage() {
               ].map((industry, i) => (
                 <motion.div
                   key={industry}
-                  className="flex items-start gap-3 p-4 border border-white/10 rounded-lg bg-white/5"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  className="industry-card"
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.4, delay: 0.4 + i * 0.05 }}
+                  whileHover={{ y: -2 }}
                 >
-                  <div className="text-white/40 mt-1" style={{ fontSize: "1.2rem" }}>◆</div>
-                  <p className="text-white/70" style={{ fontSize: "0.95rem", lineHeight: 1.6 }}>
-                    {industry}
-                  </p>
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem" }}>
+                    <span className="industry-icon">◆</span>
+                    <p className="industry-name">{industry}</p>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -595,16 +875,14 @@ export function AboutPage() {
 
           {/* Core Expertise */}
           <motion.div
-            className="mb-20"
+            className="about-content-section"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
-            <h2 className="text-white mb-10" style={{ fontSize: "1.75rem", fontWeight: 600, letterSpacing: "-0.01em" }}>
-              Core Expertise & Specializations
-            </h2>
+            <h2 className="section-title">Core Expertise & Specializations</h2>
 
-            <div className="space-y-12 max-w-3xl">
+            <div className="expertise-section">
               {[
                 {
                   title: "Fabrication & Engineering",
@@ -649,17 +927,15 @@ export function AboutPage() {
               ].map((expertise, idx) => (
                 <motion.div
                   key={expertise.title}
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  className="expertise-category"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.5, delay: 0.5 + idx * 0.1 }}
                 >
-                  <h3 className="text-white mb-4" style={{ fontSize: "1.2rem", fontWeight: 600 }}>
-                    {expertise.title}
-                  </h3>
-                  <ul className="space-y-2">
+                  <h3 className="expertise-title">{expertise.title}</h3>
+                  <ul className="expertise-list">
                     {expertise.items.map((item) => (
-                      <li key={item} className="text-white/60 flex items-center gap-3" style={{ fontSize: "0.95rem" }}>
-                        <span className="text-white/30">→</span>
+                      <li key={item} className="expertise-item">
                         {item}
                       </li>
                     ))}
@@ -671,49 +947,51 @@ export function AboutPage() {
 
           {/* Major Clients */}
           <motion.div
-            className="mb-20 pb-12 border-t border-white/10 pt-16"
+            className="about-content-section"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
           >
-            <h2 className="text-white mb-8" style={{ fontSize: "1.75rem", fontWeight: 600, letterSpacing: "-0.01em" }}>
-              Major Clients & Business Associates
-            </h2>
+            <h2 className="section-title">Major Clients & Business Associates</h2>
 
-            <p className="text-white/60 mb-8" style={{ fontSize: "0.95rem", lineHeight: 1.8 }}>
+            <p style={{ fontSize: "0.95rem", lineHeight: 1.8, color: "rgba(255, 255, 255, 0.65)", marginBottom: "2rem" }}>
               We have proudly supported and collaborated with organizations such as:
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-2xl">
-              {["Schwing Stetter", "Nelcast", "Southern Alloy Foundry", "Gravera Pvt. Ltd."].map((client) => (
+            <div className="clients-grid">
+              {["Schwing Stetter", "Nelcast", "Southern Alloy Foundry", "Gravera Pvt. Ltd."].map((client, i) => (
                 <motion.div
                   key={client}
-                  className="p-4 border border-white/15 rounded-lg bg-white/5 hover:border-white/30 hover:bg-white/8 transition-all duration-300"
-                  whileHover={{ y: -2 }}
+                  className="client-card"
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.6 + i * 0.08 }}
+                  whileHover={{ y: -4 }}
                 >
-                  <p className="text-white/70" style={{ fontSize: "0.95rem" }}>
-                    {client}
-                  </p>
+                  <p className="client-name">{client}</p>
                 </motion.div>
               ))}
             </div>
 
-            <p className="text-white/50 mt-6" style={{ fontSize: "0.9rem" }}>
+            <p style={{ fontSize: "0.9rem", color: "rgba(255, 255, 255, 0.5)", marginTop: "1.5rem" }}>
               Plus various Engineering Contractors and Industrial Suppliers
             </p>
           </motion.div>
 
-          {/* CTA */}
+          {/* CTA Section */}
           <motion.div
-            className="text-center"
+            className="cta-section"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.7 }}
           >
+            <h2 className="section-title" style={{ justifyContent: "center" }}>Ready to Partner With Us</h2>
+            <p style={{ fontSize: "1rem", color: "rgba(255, 255, 255, 0.6)", marginBottom: "2rem", maxWidth: "500px", margin: "0 auto 2rem" }}>
+              Discover how Sri Nava Industries can deliver excellence to your manufacturing needs
+            </p>
             <button
               onClick={() => navigate("/work")}
-              className="px-8 py-3.5 border border-white/20 text-white/70 hover:border-white/50 hover:text-white transition-all duration-300 hover:scale-105 cursor-pointer bg-transparent rounded-full"
-              style={{ fontSize: "0.8rem", letterSpacing: "0.06em" }}
+              className="cta-button"
             >
               Explore Our Work
             </button>
