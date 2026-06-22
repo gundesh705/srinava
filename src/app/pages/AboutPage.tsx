@@ -629,7 +629,7 @@ export function AboutPage() {
               padding: 1.5rem;
               border: 1px solid rgba(255, 255, 255, 0.08);
               border-radius: 8px;
-              background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(212, 175, 55, 0.02) 100%);
+              background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(231, 76, 60, 0.02) 100%);
               transition: all 0.3s ease;
               cursor: default;
               position: relative;
@@ -649,9 +649,9 @@ export function AboutPage() {
             }
 
             .industry-card:hover {
-              border-color: rgba(212, 175, 55, 0.3);
-              background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(212, 175, 55, 0.04) 100%);
-              box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+              border-color: rgba(231, 76, 60, 0.3);
+              background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(231, 76, 60, 0.04) 100%);
+              box-shadow: 0 0 20px rgba(231, 76, 60, 0.1);
             }
 
             .industry-card:hover::before {
@@ -660,7 +660,7 @@ export function AboutPage() {
 
             .industry-icon {
               font-size: 1.2rem;
-              color: rgba(212, 175, 55, 0.6);
+              color: rgba(231, 76, 60, 0.6);
               margin-right: 0.75rem;
             }
 
@@ -679,9 +679,9 @@ export function AboutPage() {
 
             .expertise-category {
               padding: 2rem;
-              border: 1px solid rgba(212, 175, 55, 0.15);
+              border: 1px solid rgba(231, 76, 60, 0.15);
               border-radius: 8px;
-              background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+              background: linear-gradient(135deg, rgba(231, 76, 60, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
               transition: all 0.3s ease;
               position: relative;
               overflow: hidden;
@@ -705,15 +705,15 @@ export function AboutPage() {
               left: 0;
               right: 0;
               bottom: 0;
-              background: linear-gradient(135deg, transparent 0%, rgba(212, 175, 55, 0.03) 100%);
+              background: linear-gradient(135deg, transparent 0%, rgba(231, 76, 60, 0.03) 100%);
               pointer-events: none;
             }
 
             .expertise-category:hover {
-              border-color: rgba(212, 175, 55, 0.35);
-              background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%);
+              border-color: rgba(231, 76, 60, 0.35);
+              background: linear-gradient(135deg, rgba(231, 76, 60, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%);
               transform: translateY(-4px);
-              box-shadow: 0 12px 40px rgba(212, 175, 55, 0.15);
+              box-shadow: 0 12px 40px rgba(231, 76, 60, 0.15);
             }
 
             .expertise-title {
@@ -759,7 +759,7 @@ export function AboutPage() {
 
             .expertise-item::before {
               content: '→';
-              color: rgba(212, 175, 55, 0.6);
+              color: rgba(231, 76, 60, 0.6);
               font-weight: 600;
               flex-shrink: 0;
               margin-top: 2px;
@@ -794,10 +794,10 @@ export function AboutPage() {
             }
 
             .client-card:hover {
-              border-color: rgba(212, 175, 55, 0.4);
-              background: rgba(212, 175, 55, 0.08);
+              border-color: rgba(231, 76, 60, 0.4);
+              background: rgba(231, 76, 60, 0.08);
               transform: translateY(-2px);
-              box-shadow: 0 4px 16px rgba(212, 175, 55, 0.1);
+              box-shadow: 0 4px 16px rgba(231, 76, 60, 0.1);
             }
 
             .client-name {
@@ -819,8 +819,8 @@ export function AboutPage() {
               font-weight: 600;
               letter-spacing: 0.08em;
               color: white;
-              background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.05) 100%);
-              border: 1.5px solid rgba(212, 175, 55, 0.4);
+              background: linear-gradient(135deg, rgba(231, 76, 60, 0.15) 0%, rgba(231, 76, 60, 0.05) 100%);
+              border: 1.5px solid rgba(231, 76, 60, 0.4);
               border-radius: 8px;
               cursor: pointer;
               transition: all 0.3s ease;
@@ -840,10 +840,10 @@ export function AboutPage() {
             }
 
             .cta-button:hover {
-              border-color: rgba(212, 175, 55, 0.8);
-              box-shadow: 0 0 30px rgba(212, 175, 55, 0.2);
+              border-color: rgba(231, 76, 60, 0.8);
+              box-shadow: 0 0 30px rgba(231, 76, 60, 0.2);
               transform: translateY(-2px);
-              background: linear-gradient(135deg, rgba(212, 175, 55, 0.25) 0%, rgba(212, 175, 55, 0.08) 100%);
+              background: linear-gradient(135deg, rgba(231, 76, 60, 0.25) 0%, rgba(231, 76, 60, 0.08) 100%);
             }
 
             .cta-button:hover::before {
@@ -1093,7 +1093,7 @@ export function AboutPage() {
                   display: flex;
                   flex-direction: column;
                   background: linear-gradient(135deg, rgba(30, 30, 40, 0.8), rgba(20, 20, 30, 0.8));
-                  border: 1px solid rgba(212, 175, 55, 0.2);
+                  border: 1px solid rgba(231, 76, 60, 0.2);
                   border-radius: 12px;
                   overflow: hidden;
                   animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1144,14 +1144,14 @@ export function AboutPage() {
                   align-items: center;
                   justify-content: space-between;
                   padding: 1.5rem;
-                  border-top: 1px solid rgba(212, 175, 55, 0.1);
+                  border-top: 1px solid rgba(231, 76, 60, 0.1);
                   background: rgba(15, 15, 20, 0.5);
                   gap: 1.5rem;
                 }
 
                 .gallery-button {
-                  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.05) 100%);
-                  border: 1px solid rgba(212, 175, 55, 0.3);
+                  background: linear-gradient(135deg, rgba(231, 76, 60, 0.15) 0%, rgba(231, 76, 60, 0.05) 100%);
+                  border: 1px solid rgba(231, 76, 60, 0.3);
                   color: white;
                   padding: 0.75rem 1.5rem;
                   border-radius: 6px;
@@ -1163,9 +1163,9 @@ export function AboutPage() {
                 }
 
                 .gallery-button:hover {
-                  border-color: rgba(212, 175, 55, 0.6);
-                  background: linear-gradient(135deg, rgba(212, 175, 55, 0.25) 0%, rgba(212, 175, 55, 0.08) 100%);
-                  box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+                  border-color: rgba(231, 76, 60, 0.6);
+                  background: linear-gradient(135deg, rgba(231, 76, 60, 0.25) 0%, rgba(231, 76, 60, 0.08) 100%);
+                  box-shadow: 0 0 20px rgba(231, 76, 60, 0.15);
                 }
 
                 .gallery-button:disabled {
@@ -1188,7 +1188,7 @@ export function AboutPage() {
                   padding: 1rem;
                   background: rgba(15, 15, 20, 0.7);
                   overflow-x: auto;
-                  border-top: 1px solid rgba(212, 175, 55, 0.1);
+                  border-top: 1px solid rgba(231, 76, 60, 0.1);
                 }
 
                 .gallery-thumbnail {
@@ -1196,7 +1196,7 @@ export function AboutPage() {
                   width: 60px;
                   height: 80px;
                   border-radius: 6px;
-                  border: 2px solid rgba(212, 175, 55, 0.2);
+                  border: 2px solid rgba(231, 76, 60, 0.2);
                   cursor: pointer;
                   overflow: hidden;
                   transition: all 0.3s ease;
@@ -1204,13 +1204,13 @@ export function AboutPage() {
                 }
 
                 .gallery-thumbnail:hover {
-                  border-color: rgba(212, 175, 55, 0.5);
+                  border-color: rgba(231, 76, 60, 0.5);
                   transform: scale(1.05);
                 }
 
                 .gallery-thumbnail.active {
-                  border-color: rgba(212, 175, 55, 0.8);
-                  box-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+                  border-color: rgba(231, 76, 60, 0.8);
+                  box-shadow: 0 0 12px rgba(231, 76, 60, 0.3);
                 }
 
                 .gallery-thumbnail img {
@@ -1224,7 +1224,7 @@ export function AboutPage() {
                   top: 1rem;
                   right: 1rem;
                   background: rgba(0, 0, 0, 0.6);
-                  border: 1px solid rgba(212, 175, 55, 0.3);
+                  border: 1px solid rgba(231, 76, 60, 0.3);
                   color: white;
                   width: 40px;
                   height: 40px;
@@ -1240,7 +1240,7 @@ export function AboutPage() {
 
                 .close-gallery:hover {
                   background: rgba(0, 0, 0, 0.8);
-                  border-color: rgba(212, 175, 55, 0.8);
+                  border-color: rgba(231, 76, 60, 0.8);
                 }
 
                 @media (max-width: 768px) {
