@@ -394,6 +394,7 @@ export function MachineryDetailPage() {
                     className="group relative overflow-hidden rounded-3xl border border-white/10"
                     style={{
                       boxShadow: "0 30px 70px -25px rgba(127,29,29,0.55)",
+                      height: "500px",
                     }}
                   >
                     <img
