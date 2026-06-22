@@ -7,8 +7,8 @@ const machines = [
     name: "Laser Cutting",
     icon: "◈",
     desc: "Precision cuts up to 25mm thick steel with ±0.1mm tolerance.",
-    img: img1,
-    more: "Our 3 kW CNC Fiber Laser Cutting Machine delivers high-speed, high-precision sheet metal processing using premium components from RayTools, HIWIN, THK, SMC, Schneider Electric, and ABB. With positioning accuracy of ±0.05 mm and the capability to cut mild steel up to 20 mm thickness, the machine ensures superior quality, repeatability, and productivity for industrial fabrication requirements.",
+    img: "https://cdn.builder.io/api/v1/image/assets%2F6081257f56164f79a999356618a191cf%2Fb1ef51b9ed6048bc97790f3eef6d49f5?format=webp&width=800&height=1200",
+    more: "Sri Nava Industries is equipped with an industrial Plasma Cutting Machine capable of cutting stainless steel plates up to 25 mm thickness. The machine provides fast, accurate, and efficient cutting for heavy fabrication projects, structural components, tanks, vessels, and custom metal parts. This capability enables us to process thick materials while maintaining productivity and quality standards",
   },
   {
     name: "Machinaries",
