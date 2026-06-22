@@ -26,18 +26,6 @@ const teamMembers = [
     expertise: "Quality Control & Compliance",
     bio: "Ensures every project meets rigorous quality standards and industry certifications.",
   },
-  {
-    name: "James Park",
-    role: "Senior Technician",
-    expertise: "Welding & Assembly",
-    bio: "Master welder with 12+ years of experience in precision joint fabrication.",
-  },
-  {
-    name: "Lisa Anderson",
-    role: "Project Coordinator",
-    expertise: "Client Relations & Scheduling",
-    bio: "Ensures seamless communication and on-time delivery of all projects.",
-  },
 ];
 
 export function TeamPage() {
@@ -106,7 +94,7 @@ export function TeamPage() {
 
       {/* Team Grid */}
       <div className="px-8 md:px-16 lg:px-24 pb-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {teamMembers.map((member, i) => (
             <motion.div
               key={member.name}
