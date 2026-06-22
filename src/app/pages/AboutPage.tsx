@@ -573,6 +573,7 @@ export function AboutPage() {
               -webkit-background-clip: text;
               background-clip: text;
               -webkit-text-fill-color: transparent;
+              text-align: left;
             }
 
             .about-subtitle {
@@ -580,6 +581,7 @@ export function AboutPage() {
               color: rgba(255, 255, 255, 0.6);
               line-height: 1.6;
               max-width: 600px;
+              text-align: left;
             }
 
             .about-content-section {
@@ -658,6 +660,7 @@ export function AboutPage() {
               display: flex;
               align-items: center;
               gap: 1rem;
+              text-align: left;
             }
 
             .section-title::before {
@@ -680,6 +683,7 @@ export function AboutPage() {
               color: rgba(255, 255, 255, 0.75);
               position: relative;
               padding-left: 1.5rem;
+              text-align: left;
             }
 
             .history-paragraph::before {
@@ -755,6 +759,7 @@ export function AboutPage() {
               font-size: 0.95rem;
               line-height: 1.6;
               color: rgba(255, 255, 255, 0.75);
+              text-align: left;
             }
 
             .expertise-section {
@@ -830,6 +835,7 @@ export function AboutPage() {
               display: flex;
               align-items: center;
               gap: 0.75rem;
+              text-align: left;
             }
 
             .expertise-title::before {
@@ -856,6 +862,7 @@ export function AboutPage() {
               gap: 0.75rem;
               transition: all 0.3s ease;
               padding: 0.4rem 0;
+              text-align: left;
             }
 
             .expertise-category:hover .expertise-item {
@@ -947,11 +954,12 @@ export function AboutPage() {
               letter-spacing: 0.3px;
               position: relative;
               z-index: 1;
+              text-align: center;
             }
 
             .cta-section {
               padding: clamp(3rem, 8vw, 5rem) clamp(1.5rem, 4vw, 3rem);
-              text-align: center;
+              text-align: left;
               border-top: 1px solid var(--crimson-soft);
               position: relative;
               background: linear-gradient(135deg, rgba(225, 29, 46, 0.08) 0%, rgba(13, 14, 17, 0.3) 100%);
