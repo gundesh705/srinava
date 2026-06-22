@@ -116,7 +116,7 @@ export function TeamPage() {
               transition={{ duration: 0.6, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
             >
               {/* Avatar Circle */}
-              <div className="mb-6 flex items-center justify-center w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-white/20 to-white/5 border border-white/10 group-hover:border-white/20 transition-colors duration-300 overflow-hidden">
+              <div className="mb-6 flex items-center justify-center w-40 h-40 mx-auto rounded-full bg-gradient-to-br from-white/20 to-white/5 border border-white/10 group-hover:border-white/20 transition-colors duration-300 overflow-hidden shadow-lg">
                 {member.image ? (
                   <img
                     src={member.image}
@@ -124,7 +124,7 @@ export function TeamPage() {
                     className="w-full h-full object-cover"
                   />
                 ) : (
-                  <span className="text-3xl font-bold text-white/40 group-hover:text-white/60 transition-colors duration-300">
+                  <span className="text-6xl font-bold text-white/40 group-hover:text-white/60 transition-colors duration-300">
                     {member.name.charAt(0)}
                   </span>
                 )}
