@@ -74,7 +74,6 @@ export function ContactPage() {
   const stats = [
     { value: "15+", label: "Years of Service" },
     { value: "500+", label: "Projects Delivered" },
-    { value: "ISO", label: "Certified Process" },
     { value: "24/7", label: "Support Response" },
   ];
 
@@ -239,7 +238,7 @@ export function ContactPage() {
         /* ---------- Stats strip ---------- */
         .stats-strip {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: repeat(3, 1fr);
           gap: 1px;
           max-width: 1280px;
           margin: 0 auto;
@@ -248,7 +247,7 @@ export function ContactPage() {
 
         .stats-inner {
           display: grid;
-          grid-template-columns: repeat(4, 1fr);
+          grid-template-columns: repeat(3, 1fr);
           width: 100%;
           border: 1px solid var(--line);
           border-radius: 14px;
@@ -570,11 +569,9 @@ export function ContactPage() {
         @media (max-width: 880px) {
           .contact-content { grid-template-columns: 1fr; }
           .form-row { grid-template-columns: 1fr; }
-          .stats-inner { grid-template-columns: repeat(2, 1fr); }
-          .stat-cell:nth-child(2) { border-right: none; }
-          .stat-cell:nth-child(1), .stat-cell:nth-child(2) {
-            border-bottom: 1px solid var(--line);
-          }
+          .stats-inner { grid-template-columns: 1fr; }
+          .stat-cell { border-right: none; border-bottom: 1px solid var(--line); }
+          .stat-cell:last-child { border-bottom: none; }
         }
 
         @media (prefers-reduced-motion: reduce) {
