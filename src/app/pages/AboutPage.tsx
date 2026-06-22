@@ -363,9 +363,22 @@ background: linear-gradient(
 }
 `;
 
+const PORTFOLIO_IMAGES = [
+  "https://cdn.builder.io/api/v1/image/assets%2Fd804a884d1294eac9363b52e819be07b%2Fa58f0b2518754815a34f6c9c83dda511?format=webp&width=800&height=1200",
+  "https://cdn.builder.io/api/v1/image/assets%2Fd804a884d1294eac9363b52e819be07b%2F0cd9153897374513b3d102c0460396f6?format=webp&width=800&height=1200",
+  "https://cdn.builder.io/api/v1/image/assets%2Fd804a884d1294eac9363b52e819be07b%2F6d043fd9dc9648f8b3b3cbcbce35d055?format=webp&width=800&height=1200",
+  "https://cdn.builder.io/api/v1/image/assets%2Fd804a884d1294eac9363b52e819be07b%2F089cfebf1ad74e988199777754af9d06?format=webp&width=800&height=1200",
+  "https://cdn.builder.io/api/v1/image/assets%2Fd804a884d1294eac9363b52e819be07b%2F39dd1c3495324ae6958d804daacecaa1?format=webp&width=800&height=1200",
+  "https://cdn.builder.io/api/v1/image/assets%2Fd804a884d1294eac9363b52e819be07b%2Fc1b326a97aad46028a396cebce2057fd?format=webp&width=800&height=1200",
+  "https://cdn.builder.io/api/v1/image/assets%2Fd804a884d1294eac9363b52e819be07b%2F2ff252bed03543b6930e3858d1671edc?format=webp&width=800&height=1200",
+  "https://cdn.builder.io/api/v1/image/assets%2Fd804a884d1294eac9363b52e819be07b%2F8102b150f4c14c8099e4f53ec000ee28?format=webp&width=800&height=1200",
+];
+
 export function AboutPage() {
   const navigate = useNavigate();
   const [introComplete, setIntroComplete] = useState(false);
+  const [galleryOpen, setGalleryOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
     (function () {
@@ -990,12 +1003,271 @@ export function AboutPage() {
               Discover how Sri Nava Industries can deliver excellence to your manufacturing needs
             </p>
             <button
-              onClick={() => navigate("/work")}
+              onClick={() => setGalleryOpen(true)}
               className="cta-button"
             >
-              Explore Our Work
+              Fabrication Portfolio
             </button>
           </motion.div>
+
+          {/* Gallery Modal */}
+          {galleryOpen && (
+            <div className="gallery-overlay" onClick={() => setGalleryOpen(false)}>
+              <style>{`
+                .gallery-overlay {
+                  position: fixed;
+                  inset: 0;
+                  background: rgba(10, 10, 10, 0.95);
+                  backdrop-filter: blur(8px);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  z-index: 1000;
+                  padding: 1rem;
+                  animation: fadeIn 0.3s ease-out;
+                }
+
+                @keyframes fadeIn {
+                  from { opacity: 0; }
+                  to { opacity: 1; }
+                }
+
+                .gallery-container {
+                  position: relative;
+                  max-width: 900px;
+                  width: 100%;
+                  max-height: 90vh;
+                  display: flex;
+                  flex-direction: column;
+                  background: linear-gradient(135deg, rgba(30, 30, 40, 0.8), rgba(20, 20, 30, 0.8));
+                  border: 1px solid rgba(212, 175, 55, 0.2);
+                  border-radius: 12px;
+                  overflow: hidden;
+                  animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                }
+
+                @keyframes slideUp {
+                  from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                  }
+                  to {
+                    opacity: 1;
+                    transform: translateY(0);
+                  }
+                }
+
+                .gallery-image-wrapper {
+                  position: relative;
+                  flex: 1;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  overflow: hidden;
+                  background: linear-gradient(135deg, rgba(10, 10, 15, 0.5), rgba(20, 30, 40, 0.5));
+                  min-height: 500px;
+                }
+
+                .gallery-image {
+                  max-width: 100%;
+                  max-height: 100%;
+                  object-fit: contain;
+                  animation: zoomIn 0.4s ease-out;
+                }
+
+                @keyframes zoomIn {
+                  from {
+                    opacity: 0;
+                    transform: scale(0.95);
+                  }
+                  to {
+                    opacity: 1;
+                    transform: scale(1);
+                  }
+                }
+
+                .gallery-controls {
+                  display: flex;
+                  align-items: center;
+                  justify-content: space-between;
+                  padding: 1.5rem;
+                  border-top: 1px solid rgba(212, 175, 55, 0.1);
+                  background: rgba(15, 15, 20, 0.5);
+                  gap: 1.5rem;
+                }
+
+                .gallery-button {
+                  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.05) 100%);
+                  border: 1px solid rgba(212, 175, 55, 0.3);
+                  color: white;
+                  padding: 0.75rem 1.5rem;
+                  border-radius: 6px;
+                  cursor: pointer;
+                  font-size: 0.9rem;
+                  font-weight: 500;
+                  transition: all 0.3s ease;
+                  letter-spacing: 0.5px;
+                }
+
+                .gallery-button:hover {
+                  border-color: rgba(212, 175, 55, 0.6);
+                  background: linear-gradient(135deg, rgba(212, 175, 55, 0.25) 0%, rgba(212, 175, 55, 0.08) 100%);
+                  box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+                }
+
+                .gallery-button:disabled {
+                  opacity: 0.4;
+                  cursor: not-allowed;
+                }
+
+                .gallery-counter {
+                  color: rgba(255, 255, 255, 0.7);
+                  font-size: 0.9rem;
+                  font-weight: 500;
+                  letter-spacing: 0.5px;
+                  min-width: 80px;
+                  text-align: center;
+                }
+
+                .gallery-thumbnails {
+                  display: flex;
+                  gap: 0.75rem;
+                  padding: 1rem;
+                  background: rgba(15, 15, 20, 0.7);
+                  overflow-x: auto;
+                  border-top: 1px solid rgba(212, 175, 55, 0.1);
+                }
+
+                .gallery-thumbnail {
+                  flex-shrink: 0;
+                  width: 60px;
+                  height: 80px;
+                  border-radius: 6px;
+                  border: 2px solid rgba(212, 175, 55, 0.2);
+                  cursor: pointer;
+                  overflow: hidden;
+                  transition: all 0.3s ease;
+                  background: rgba(255, 255, 255, 0.05);
+                }
+
+                .gallery-thumbnail:hover {
+                  border-color: rgba(212, 175, 55, 0.5);
+                  transform: scale(1.05);
+                }
+
+                .gallery-thumbnail.active {
+                  border-color: rgba(212, 175, 55, 0.8);
+                  box-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+                }
+
+                .gallery-thumbnail img {
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                }
+
+                .close-gallery {
+                  position: absolute;
+                  top: 1rem;
+                  right: 1rem;
+                  background: rgba(0, 0, 0, 0.6);
+                  border: 1px solid rgba(212, 175, 55, 0.3);
+                  color: white;
+                  width: 40px;
+                  height: 40px;
+                  border-radius: 6px;
+                  cursor: pointer;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  font-size: 1.5rem;
+                  transition: all 0.3s ease;
+                  z-index: 10;
+                }
+
+                .close-gallery:hover {
+                  background: rgba(0, 0, 0, 0.8);
+                  border-color: rgba(212, 175, 55, 0.8);
+                }
+
+                @media (max-width: 768px) {
+                  .gallery-container {
+                    max-height: 95vh;
+                    border-radius: 8px;
+                  }
+
+                  .gallery-image-wrapper {
+                    min-height: 350px;
+                  }
+
+                  .gallery-controls {
+                    flex-wrap: wrap;
+                    padding: 1rem;
+                  }
+
+                  .gallery-button {
+                    padding: 0.65rem 1.2rem;
+                    font-size: 0.85rem;
+                  }
+                }
+              `}</style>
+
+              <div className="gallery-container" onClick={(e) => e.stopPropagation()}>
+                <button
+                  className="close-gallery"
+                  onClick={() => setGalleryOpen(false)}
+                >
+                  ✕
+                </button>
+
+                <div className="gallery-image-wrapper">
+                  <img
+                    src={PORTFOLIO_IMAGES[currentImageIndex]}
+                    alt={`Portfolio item ${currentImageIndex + 1}`}
+                    className="gallery-image"
+                  />
+                </div>
+
+                <div className="gallery-thumbnails">
+                  {PORTFOLIO_IMAGES.map((img, idx) => (
+                    <button
+                      key={idx}
+                      className={`gallery-thumbnail ${idx === currentImageIndex ? "active" : ""}`}
+                      onClick={() => setCurrentImageIndex(idx)}
+                    >
+                      <img src={img} alt={`Thumbnail ${idx + 1}`} />
+                    </button>
+                  ))}
+                </div>
+
+                <div className="gallery-controls">
+                  <button
+                    className="gallery-button"
+                    onClick={() =>
+                      setCurrentImageIndex((prev) =>
+                        prev === 0 ? PORTFOLIO_IMAGES.length - 1 : prev - 1
+                      )
+                    }
+                  >
+                    ← Previous
+                  </button>
+                  <div className="gallery-counter">
+                    {currentImageIndex + 1} / {PORTFOLIO_IMAGES.length}
+                  </div>
+                  <button
+                    className="gallery-button"
+                    onClick={() =>
+                      setCurrentImageIndex((prev) =>
+                        prev === PORTFOLIO_IMAGES.length - 1 ? 0 : prev + 1
+                      )
+                    }
+                  >
+                    Next →
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       )}
     </div>
