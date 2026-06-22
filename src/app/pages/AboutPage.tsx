@@ -725,6 +725,9 @@ export function AboutPage() {
               cursor: default;
               position: relative;
               overflow: hidden;
+              align-items: center;
+              display: flex;
+              gap: 1rem;
             }
 
             .industry-card::before {
@@ -759,7 +762,8 @@ export function AboutPage() {
               font-size: 0.95rem;
               line-height: 1.6;
               color: rgba(255, 255, 255, 0.75);
-              text-align: justify;
+              text-align: left !important;
+              text justify: none;
             }
 
             .expertise-section {
@@ -1095,9 +1099,19 @@ export function AboutPage() {
                   transition={{ duration: 0.4, delay: 0.4 + i * 0.05 }}
                   whileHover={{ y: -2 }}
                 >
-                  <div style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem" }}>
+                  <div style={{ display: "flex", alignItems: "flex-start", gap: "1rem", width: "100%" }}>
                     <span className="industry-icon">◆</span>
-                    <p className="industry-name">{industry}</p>
+                    <p
+  className="industry-name"
+  style={{
+    textAlign:
+      industry === "Heavy Engineering & Fabrication"
+        ? "left"
+        : "justify",
+  }}
+>
+  {industry}
+</p>
                   </div>
                 </motion.div>
               ))}
@@ -1126,13 +1140,12 @@ export function AboutPage() {
                   ],
                 },
                 {
-                  title: "Industrial Equipment & Components",
+                  title: "Industrial Equipments",
                   items: [
                     "Sandblasting Machine Components",
                     "Industrial Blowers",
                     "Impellers",
                     "Ducting Systems",
-                    "Industrial Fans",
                     "Material Handling Equipment",
                   ],
                 },
