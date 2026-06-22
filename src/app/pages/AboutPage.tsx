@@ -573,7 +573,7 @@ export function AboutPage() {
               -webkit-background-clip: text;
               background-clip: text;
               -webkit-text-fill-color: transparent;
-              text-align: left;
+              text-align: justify;
             }
 
             .about-subtitle {
@@ -581,7 +581,7 @@ export function AboutPage() {
               color: rgba(255, 255, 255, 0.6);
               line-height: 1.6;
               max-width: 600px;
-              text-align: left;
+              text-align: justify;
             }
 
             .about-content-section {
@@ -660,7 +660,7 @@ export function AboutPage() {
               display: flex;
               align-items: center;
               gap: 1rem;
-              text-align: left;
+              text-align: justify;
             }
 
             .section-title::before {
@@ -683,7 +683,7 @@ export function AboutPage() {
               color: rgba(255, 255, 255, 0.75);
               position: relative;
               padding-left: 1.5rem;
-              text-align: left;
+              text-align: justify;
             }
 
             .history-paragraph::before {
@@ -759,7 +759,7 @@ export function AboutPage() {
               font-size: 0.95rem;
               line-height: 1.6;
               color: rgba(255, 255, 255, 0.75);
-              text-align: left;
+              text-align: justify;
             }
 
             .expertise-section {
@@ -835,7 +835,7 @@ export function AboutPage() {
               display: flex;
               align-items: center;
               gap: 0.75rem;
-              text-align: left;
+              text-align: justify;
             }
 
             .expertise-title::before {
@@ -862,7 +862,7 @@ export function AboutPage() {
               gap: 0.75rem;
               transition: all 0.3s ease;
               padding: 0.4rem 0;
-              text-align: left;
+              text-align: justify;
             }
 
             .expertise-category:hover .expertise-item {
@@ -959,7 +959,7 @@ export function AboutPage() {
 
             .cta-section {
               padding: clamp(3rem, 8vw, 5rem) clamp(1.5rem, 4vw, 3rem);
-              text-align: left;
+              text-align: justify;
               border-top: 1px solid var(--crimson-soft);
               position: relative;
               background: linear-gradient(135deg, rgba(225, 29, 46, 0.08) 0%, rgba(13, 14, 17, 0.3) 100%);

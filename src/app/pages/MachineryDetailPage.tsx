@@ -354,7 +354,7 @@ export function MachineryDetailPage() {
                     <div className="absolute left-0 top-6 bottom-6 w-1 rounded-full bg-gradient-to-b from-red-500 via-red-600 to-red-900" />
                     <p
                       className="text-white/75"
-                      style={{ fontSize: "1rem", lineHeight: 1.9, fontWeight: 500, textAlign: "left" }}
+                      style={{ fontSize: "1rem", lineHeight: 1.9, fontWeight: 500, textAlign: "justify" }}
                     >
                       {item.description}
                     </p>
