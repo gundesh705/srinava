@@ -557,41 +557,6 @@ export function AboutPage() {
             .about-header {
               padding: clamp(2rem, 6vw, 4rem) clamp(1.5rem, 4vw, 3rem);
               max-width: 100%;
-              position: relative;
-              overflow: hidden;
-            }
-
-            .about-header::before {
-              content: '';
-              position: absolute;
-              top: 0;
-              left: -100%;
-              width: 60%;
-              height: 3px;
-              background: linear-gradient(90deg, transparent, #d32f2f, #ff6b6b, #d32f2f, transparent);
-              box-shadow: 0 0 20px #d32f2f, 0 0 40px rgba(211, 47, 47, 0.6);
-              animation: laserSweep 4s ease-in-out infinite;
-            }
-
-            @keyframes laserSweep {
-              0% {
-                left: -100%;
-                opacity: 0;
-              }
-              20% {
-                opacity: 1;
-              }
-              50% {
-                left: 100%;
-                opacity: 1;
-              }
-              80% {
-                opacity: 1;
-              }
-              100% {
-                left: 100%;
-                opacity: 0;
-              }
             }
 
             .about-back-btn {
