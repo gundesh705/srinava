@@ -559,8 +559,8 @@ export function AboutPage() {
 
             .about-back-btn:hover {
               color: rgba(255, 255, 255, 0.8);
-              border-color: rgba(231, 76, 60, 0.3);
-              background: rgba(231, 76, 60, 0.05);
+              border-color: var(--crimson-soft);
+              background: rgba(225, 29, 46, 0.05);
             }
 
             .about-title {
@@ -569,7 +569,7 @@ export function AboutPage() {
               letter-spacing: -0.02em;
               line-height: 1.1;
               margin-bottom: 1.5rem;
-              background: linear-gradient(135deg, rgba(255, 255, 255, 1) 0%, rgba(231, 76, 60, 0.9) 100%);
+              background: linear-gradient(135deg, #ffffff 0%, var(--crimson-bright) 100%);
               -webkit-background-clip: text;
               background-clip: text;
               -webkit-text-fill-color: transparent;
@@ -606,7 +606,7 @@ export function AboutPage() {
               content: '';
               width: 4px;
               height: 2rem;
-              background: linear-gradient(180deg, var(--gold) 0%, transparent 100%);
+              background: linear-gradient(180deg, var(--crimson-bright) 0%, transparent 100%);
               border-radius: 2px;
             }
 
@@ -631,9 +631,9 @@ export function AboutPage() {
 
             .industry-card {
               padding: 1.5rem;
-              border: 1px solid rgba(255, 255, 255, 0.08);
+              border: 1px solid var(--line);
               border-radius: 8px;
-              background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(231, 76, 60, 0.02) 100%);
+              background: rgba(255, 255, 255, 0.025);
               transition: all 0.3s ease;
               cursor: default;
               position: relative;
@@ -647,15 +647,15 @@ export function AboutPage() {
               left: 0;
               right: 0;
               height: 1px;
-              background: linear-gradient(90deg, transparent, var(--gold), transparent);
+              background: linear-gradient(90deg, transparent, var(--crimson-bright), transparent);
               opacity: 0;
               transition: opacity 0.3s ease;
             }
 
             .industry-card:hover {
-              border-color: rgba(231, 76, 60, 0.3);
-              background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(231, 76, 60, 0.04) 100%);
-              box-shadow: 0 0 20px rgba(231, 76, 60, 0.1);
+              border-color: var(--crimson-soft);
+              background: rgba(225, 29, 46, 0.06);
+              box-shadow: 0 0 20px rgba(225, 29, 46, 0.15);
             }
 
             .industry-card:hover::before {
@@ -664,7 +664,7 @@ export function AboutPage() {
 
             .industry-icon {
               font-size: 1.2rem;
-              color: rgba(231, 76, 60, 0.6);
+              color: var(--crimson-bright);
               margin-right: 0.75rem;
             }
 
@@ -683,9 +683,9 @@ export function AboutPage() {
 
             .expertise-category {
               padding: 2rem;
-              border: 1px solid rgba(231, 76, 60, 0.15);
+              border: 1px solid var(--line);
               border-radius: 8px;
-              background: linear-gradient(135deg, rgba(231, 76, 60, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+              background: linear-gradient(135deg, rgba(225, 29, 46, 0.08) 0%, rgba(13, 14, 17, 0.5) 100%);
               transition: all 0.3s ease;
               position: relative;
               overflow: hidden;
@@ -698,7 +698,7 @@ export function AboutPage() {
               left: 0;
               right: 0;
               height: 3px;
-              background: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+              background: linear-gradient(90deg, var(--crimson-bright) 0%, transparent 100%);
               opacity: 0.6;
             }
 
@@ -709,15 +709,15 @@ export function AboutPage() {
               left: 0;
               right: 0;
               bottom: 0;
-              background: linear-gradient(135deg, transparent 0%, rgba(231, 76, 60, 0.03) 100%);
+              background: linear-gradient(135deg, transparent 0%, rgba(225, 29, 46, 0.03) 100%);
               pointer-events: none;
             }
 
             .expertise-category:hover {
-              border-color: rgba(231, 76, 60, 0.35);
-              background: linear-gradient(135deg, rgba(231, 76, 60, 0.1) 0%, rgba(255, 255, 255, 0.03) 100%);
+              border-color: var(--crimson-soft);
+              background: linear-gradient(135deg, rgba(225, 29, 46, 0.14) 0%, rgba(13, 14, 17, 0.65) 100%);
               transform: translateY(-4px);
-              box-shadow: 0 12px 40px rgba(231, 76, 60, 0.15);
+              box-shadow: 0 12px 40px rgba(225, 29, 46, 0.2);
             }
 
             .expertise-title {
@@ -735,7 +735,7 @@ export function AboutPage() {
 
             .expertise-title::before {
               content: '◆';
-              color: var(--gold);
+              color: var(--crimson-bright);
               font-size: 0.8rem;
             }
 
@@ -763,7 +763,7 @@ export function AboutPage() {
 
             .expertise-item::before {
               content: '→';
-              color: rgba(231, 76, 60, 0.6);
+              color: var(--crimson-soft);
               font-weight: 600;
               flex-shrink: 0;
               margin-top: 2px;
@@ -771,7 +771,7 @@ export function AboutPage() {
             }
 
             .expertise-category:hover .expertise-item::before {
-              color: var(--gold);
+              color: var(--crimson-bright);
             }
 
             @media (max-width: 768px) {
@@ -789,19 +789,19 @@ export function AboutPage() {
 
             .client-card {
               padding: 1.25rem;
-              border: 1px solid rgba(255, 255, 255, 0.1);
+              border: 1px solid var(--line);
               border-radius: 8px;
-              background: rgba(255, 255, 255, 0.03);
+              background: rgba(255, 255, 255, 0.025);
               text-align: center;
               transition: all 0.3s ease;
               cursor: default;
             }
 
             .client-card:hover {
-              border-color: rgba(231, 76, 60, 0.4);
-              background: rgba(231, 76, 60, 0.08);
+              border-color: var(--crimson-soft);
+              background: rgba(225, 29, 46, 0.08);
               transform: translateY(-2px);
-              box-shadow: 0 4px 16px rgba(231, 76, 60, 0.1);
+              box-shadow: 0 4px 16px rgba(225, 29, 46, 0.15);
             }
 
             .client-name {
