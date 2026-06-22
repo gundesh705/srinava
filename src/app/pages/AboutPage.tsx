@@ -1044,25 +1044,6 @@ export function AboutPage() {
             </p>
           </motion.div>
 
-          {/* CTA Section */}
-          <motion.div
-            className="cta-section"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
-          >
-            <h2 className="section-title" style={{ justifyContent: "center" }}>Ready to Partner With Us</h2>
-            <p style={{ fontSize: "1rem", color: "rgba(255, 255, 255, 0.6)", marginBottom: "2rem", maxWidth: "500px", margin: "0 auto 2rem" }}>
-              Discover how Sri Nava Industries can deliver excellence to your manufacturing needs
-            </p>
-            <button
-              onClick={() => setGalleryOpen(true)}
-              className="cta-button"
-            >
-              Fabrication Portfolio
-            </button>
-          </motion.div>
-
           {/* Gallery Modal */}
           {galleryOpen && (
             <div className="gallery-overlay" onClick={() => setGalleryOpen(false)}>
