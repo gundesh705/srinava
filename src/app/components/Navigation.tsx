@@ -112,6 +112,26 @@ export function Navigation() {
         }
       `}</style>
 
+      <motion.div
+        className="fixed top-0 left-0 right-0 z-40 nav-header"
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <div className="nav-content">
+          <div className="nav-menu">
+            {navItems.map((item) => (
+              <button
+                key={item.label}
+                onClick={() => navigate(item.path)}
+                className="nav-item"
+              >
+                {item.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </motion.div>
     </>
   );
 }
