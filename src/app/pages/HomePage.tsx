@@ -84,7 +84,7 @@ export function HomePage() {
           }}
         >
           {headlineLines.map((line, lineIndex) => (
-            <span key={line} className="relative block overflow-hidden py-[0.08em]">
+            <span key={line} className="relative block overflow-hidden py-[0.08em] whitespace-nowrap">
               {/* The text, masked from below as the "cut" passes */}
               <motion.span
                 className="relative block"
