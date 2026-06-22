@@ -9,7 +9,7 @@ const machines = [
     name: "Laser Cutting",
     icon: "◈",
     desc: "Precision cuts up to 25mm thick steel with +/-0.1mm tolerance.",
-    img: "https://cdn.builder.io/api/v1/image/assets%2F6081257f56164f79a999356618a191cf%2Fcc3f6282c4e94850a109fdb6a87a5ecd?format=webp&width=800&height=1200",
+    img: "https://cdn.builder.io/api/v1/image/assets%2F6081257f56164f79a999356618a191cf%2Ffcc9ccca098544a78f65ea68b4c8e97c?format=webp&width=800&height=1200",
     more: "Sri Nava Industries is equipped with an industrial Plasma Cutting Machine capable of cutting stainless steel plates up to 25 mm thickness. The machine provides fast, accurate, and efficient cutting for heavy fabrication projects, structural components, tanks, vessels, and custom metal parts. This capability enables us to process thick materials while maintaining productivity and quality standards",
   },
   {
