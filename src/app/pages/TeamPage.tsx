@@ -3,28 +3,34 @@ import { motion } from "motion/react";
 
 const teamMembers = [
   {
-    name: "Alex Johnson",
-    role: "Chief Technology Officer",
-    expertise: "CNC Programming & Systems",
-    bio: "15+ years in precision manufacturing with expertise in advanced machining systems.",
+    name: "K. Bhuvanendran",
+    role: "Founder",
+    expertise: "Strategic Vision & Leadership",
+    bio: "Visionary founder who established Sri Nava Industries in 1985, building a legacy of excellence in fabrication and engineering.",
   },
   {
-    name: "Sarah Chen",
-    role: "Operations Director",
-    expertise: "Production Management",
-    bio: "Specializes in optimizing workflow and maintaining highest quality standards across facilities.",
+    name: "Managing Director",
+    role: "Managing Director & Finance",
+    expertise: "Business Strategy & Finance",
+    bio: "Leads overall business operations and financial management, ensuring sustainable growth and profitability.",
   },
   {
-    name: "Michael Rodriguez",
-    role: "Lead Engineer",
-    expertise: "Mechanical Design & Fabrication",
-    bio: "Expert in complex metal fabrication and structural engineering with proven track record.",
+    name: "Operations Manager",
+    role: "Operations Manager & Administration",
+    expertise: "Operations & Administration",
+    bio: "Oversees daily operations, resource management, and administrative functions for seamless business delivery.",
   },
   {
-    name: "Emma Wilson",
-    role: "Quality Assurance Manager",
-    expertise: "Quality Control & Compliance",
-    bio: "Ensures every project meets rigorous quality standards and industry certifications.",
+    name: "Design Engineer",
+    role: "Design Engineer & CAD Specialist",
+    expertise: "CAD Design & Engineering",
+    bio: "Creates precision designs and technical specifications using advanced CAD tools for complex fabrication projects.",
+  },
+  {
+    name: "Finance Officer",
+    role: "Accounts & Information Technology",
+    expertise: "Finance & IT Systems",
+    bio: "Manages financial operations, IT infrastructure, and systems to support business growth and data security.",
   },
 ];
 
@@ -94,7 +100,7 @@ export function TeamPage() {
 
       {/* Team Grid */}
       <div className="px-8 md:px-16 lg:px-24 pb-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {teamMembers.map((member, i) => (
             <motion.div
               key={member.name}
