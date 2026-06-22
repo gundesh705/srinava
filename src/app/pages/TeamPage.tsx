@@ -43,144 +43,384 @@ export function TeamPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a]">
-      {/* Header */}
-      <motion.nav
-        className="fixed top-0 left-0 right-0 z-20 flex items-center justify-between px-8 py-6 bg-[#0a0a0a]/80 backdrop-blur-sm border-b border-white/5"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
-        <button
-          onClick={() => navigate("/work")}
-          className="text-white/40 hover:text-white transition-colors duration-200 bg-transparent border-none cursor-pointer"
-          style={{ fontSize: "0.8rem", letterSpacing: "0.1em" }}
-        >
-          ← Back
-        </button>
-      </motion.nav>
+    <div className="team-page-wrapper">
+      <style>{`
+        .team-page-wrapper {
+          --steel-950: #050506;
+          --steel-900: #08090b;
+          --steel-800: #0d0e11;
+          --steel-700: #15171b;
+          --crimson: #e11d2e;
+          --crimson-bright: #ff3340;
+          --crimson-deep: #8f0f1a;
+          --crimson-soft: rgba(225, 29, 46, 0.5);
+          --crimson-faint: rgba(225, 29, 46, 0.14);
+          --ember: #ff7a2c;
+          --line: rgba(255, 255, 255, 0.08);
+          --line-strong: rgba(255, 255, 255, 0.14);
+          --text: rgba(255, 255, 255, 0.94);
+          --text-dim: rgba(255, 255, 255, 0.56);
+          --text-faint: rgba(255, 255, 255, 0.34);
 
-      {/* Hero Section */}
-      <div className="relative overflow-hidden pt-32 pb-24 px-8 md:px-16 lg:px-24">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-0 left-1/4 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
-          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
+          position: relative;
+          min-height: 100vh;
+          background: radial-gradient(140% 90% at 50% -10%, #141416 0%, var(--steel-950) 60%);
+          color: var(--text);
+          padding-top: 5rem;
+          overflow: hidden;
+          font-family: inherit;
+          -webkit-font-smoothing: antialiased;
+        }
+
+        .bg-grid {
+          position: absolute;
+          inset: 0;
+          background-image:
+            linear-gradient(rgba(225,29,46,0.055) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(225,29,46,0.055) 1px, transparent 1px);
+          background-size: 54px 54px;
+          mask-image: radial-gradient(circle at 50% 25%, black 0%, transparent 78%);
+          animation: gridDrift 32s linear infinite;
+          pointer-events: none;
+        }
+
+        @keyframes gridDrift {
+          from { background-position: 0 0, 0 0; }
+          to   { background-position: 54px 54px, 54px 54px; }
+        }
+
+        .bg-glow {
+          position: absolute;
+          top: -12%;
+          left: 50%;
+          width: 75vw;
+          height: 65vh;
+          transform: translateX(-50%);
+          background: radial-gradient(ellipse at center, rgba(225,29,46,0.18) 0%, transparent 70%);
+          filter: blur(50px);
+          pointer-events: none;
+          animation: pulseGlow 8s ease-in-out infinite;
+        }
+
+        .bg-vignette {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(120% 120% at 50% 0%, transparent 55%, rgba(0,0,0,0.55) 100%);
+          pointer-events: none;
+        }
+
+        @keyframes pulseGlow {
+          0%, 100% { opacity: 0.55; }
+          50%      { opacity: 1; }
+        }
+
+        .scan-beam {
+          position: absolute;
+          left: 0;
+          right: 0;
+          height: 2px;
+          background: linear-gradient(90deg, transparent, var(--crimson-bright), transparent);
+          opacity: 0.5;
+          animation: scan 7.5s ease-in-out infinite;
+          pointer-events: none;
+        }
+
+        @keyframes scan {
+          0%   { top: 6%;  opacity: 0; }
+          15%  { opacity: 0.55; }
+          85%  { opacity: 0.55; }
+          100% { top: 96%; opacity: 0; }
+        }
+
+        .spark {
+          position: absolute;
+          width: 3px;
+          height: 3px;
+          border-radius: 50%;
+          background: var(--ember);
+          box-shadow: 0 0 8px 2px rgba(255, 122, 44, 0.7);
+          pointer-events: none;
+          animation: rise linear infinite;
+        }
+
+        @keyframes rise {
+          0%   { transform: translateY(0) scale(1); opacity: 0; }
+          10%  { opacity: 1; }
+          90%  { opacity: 0.8; }
+          100% { transform: translateY(-92vh) scale(0.2); opacity: 0; }
+        }
+
+        .team-inner { position: relative; z-index: 2; }
+
+        .team-header {
+          padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 4vw, 3rem) clamp(1.5rem, 4vw, 2.5rem);
+          text-align: left;
+          max-width: 1280px;
+          margin: 0 auto;
+        }
+
+        .eyebrow {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.7rem;
+          font-size: 0.72rem;
+          letter-spacing: 0.3em;
+          text-transform: uppercase;
+          color: var(--crimson-bright);
+          font-weight: 700;
+          margin-bottom: 1.4rem;
+        }
+
+        .eyebrow::before {
+          content: "";
+          width: 36px;
+          height: 1px;
+          background: linear-gradient(90deg, var(--crimson-bright), transparent);
+        }
+
+        .team-title {
+          font-size: clamp(2.6rem, 7.5vw, 5rem);
+          font-weight: 800;
+          letter-spacing: -0.035em;
+          line-height: 1.02;
+          margin-bottom: 1.4rem;
+          background: linear-gradient(135deg, #ffffff 0%, #f2f2f2 42%, var(--crimson-bright) 100%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+        .team-subtitle {
+          font-size: clamp(1rem, 2vw, 1.12rem);
+          color: var(--text-dim);
+          line-height: 1.75;
+          max-width: 640px;
+        }
+
+        .team-grid-wrapper {
+          padding: clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 4vw, 3rem) clamp(4rem, 8vw, 7rem);
+          max-width: 1280px;
+          margin: 0 auto;
+        }
+
+        .team-card {
+          position: relative;
+          padding: 1.85rem 2rem;
+          border: 1px solid var(--line);
+          border-radius: 16px;
+          background: linear-gradient(135deg, rgba(225,29,46,0.08) 0%, rgba(13,14,17,0.65) 55%), rgba(13,14,17,0.88);
+          transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+          overflow: hidden;
+        }
+
+        .team-card::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(225,29,46,0.16), transparent 60%);
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          pointer-events: none;
+        }
+
+        .team-card:hover {
+          border-color: var(--crimson-soft);
+          background: linear-gradient(135deg, rgba(225,29,46,0.14) 0%, rgba(13,14,17,0.65) 55%), rgba(13,14,17,0.92);
+          transform: translateY(-4px);
+          box-shadow: 0 16px 38px -10px rgba(225,29,46,0.45);
+        }
+
+        .team-card:hover::after { opacity: 1; }
+
+        .team-card-content h3 {
+          font-size: 1.15rem;
+          font-weight: 600;
+          color: #fff;
+          margin-bottom: 0.4rem;
+          letter-spacing: -0.01em;
+        }
+
+        .team-card-role {
+          font-size: 0.9rem;
+          color: var(--crimson-bright);
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          font-weight: 700;
+          margin-bottom: 0.8rem;
+        }
+
+        .team-card-expertise {
+          display: inline-block;
+          font-size: 0.68rem;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          color: var(--text-faint);
+          font-weight: 600;
+          padding: 0.5rem 0.8rem;
+          border: 1px solid var(--crimson-faint);
+          border-radius: 8px;
+          background: linear-gradient(135deg, rgba(225,29,46,0.12), rgba(225,29,46,0.04));
+          margin-bottom: 0.8rem;
+        }
+
+        .team-card-bio {
+          font-size: 0.88rem;
+          color: var(--text-dim);
+          line-height: 1.6;
+        }
+
+        .team-card-line {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 2px;
+          background: linear-gradient(90deg, transparent, var(--crimson-bright), transparent);
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+
+        .team-card:hover .team-card-line { opacity: 1; }
+
+        @media (prefers-reduced-motion: reduce) {
+          .bg-grid, .bg-glow, .scan-beam, .spark { animation: none; }
+        }
+      `}</style>
+
+      {/* Animated backdrop */}
+      <div className="bg-grid" />
+      <div className="bg-glow" />
+      <div className="scan-beam" />
+      <div className="bg-vignette" />
+      {[...Array(7)].map((_, i) => (
+        <span
+          key={i}
+          className="spark"
+          style={{
+            left: `${8 + i * 13}%`,
+            bottom: "-10px",
+            animationDuration: `${5 + (i % 4) * 1.5}s`,
+            animationDelay: `${i * 0.9}s`,
+          }}
+        />
+      ))}
+
+      <div className="team-inner">
+        {/* Header */}
+        <div className="team-header">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+          >
+            <span className="eyebrow">Our Team</span>
+            <h1 className="team-title">Talented Professionals</h1>
+            <p className="team-subtitle">
+              Our team comprises industry veterans and skilled craftspeople dedicated to delivering excellence in every project. With combined experience spanning decades, we bring innovation and precision to every challenge.
+            </p>
+          </motion.div>
         </div>
 
-        <motion.div
-          className="relative z-10"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-8 h-px bg-white/40" />
-            <span className="text-white/40 uppercase" style={{ fontSize: "0.7rem", letterSpacing: "0.25em", fontWeight: 500 }}>
-              Our People
-            </span>
-          </div>
+        {/* Team Grid */}
+        <div className="team-grid-wrapper">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {teamMembers.map((member, i) => (
+              <motion.div
+                key={member.name}
+                className="team-card"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.6, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ y: -6 }}
+                onMouseMove={(e) => {
+                  const r = e.currentTarget.getBoundingClientRect();
+                  e.currentTarget.style.setProperty("--mx", `${e.clientX - r.left}px`);
+                  e.currentTarget.style.setProperty("--my", `${e.clientY - r.top}px`);
+                }}
+              >
+                <div className="mb-4 flex items-center justify-center w-24 h-24 mx-auto rounded-full bg-gradient-to-br from-red-500/30 to-red-500/10 border border-red-500/30 overflow-hidden">
+                  {member.image ? (
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <span className="text-5xl font-bold text-red-500/50">
+                      {member.name.charAt(0)}
+                    </span>
+                  )}
+                </div>
 
-          <h1
-            className="text-white mb-6"
-            style={{ fontSize: "clamp(2.5rem, 6vw, 4rem)", fontWeight: 700, letterSpacing: "-0.02em", lineHeight: 1.1 }}
-          >
-            Talented Professionals
-          </h1>
+                <div className="team-card-content text-center">
+                  <h3>{member.name}</h3>
+                  <div className="team-card-role">{member.role}</div>
+                  <div className="flex justify-center mb-3">
+                    <span className="team-card-expertise">{member.expertise}</span>
+                  </div>
+                  <p className="team-card-bio">{member.bio}</p>
+                </div>
 
-          <p
-            className="text-white/50 max-w-2xl"
-            style={{ fontSize: "1.1rem", lineHeight: 1.8 }}
-          >
-            Our team comprises industry veterans and skilled craftspeople dedicated to delivering excellence in every project. With combined experience spanning decades, we bring innovation and precision to every challenge.
-          </p>
-        </motion.div>
-      </div>
+                <div className="team-card-line" />
+              </motion.div>
+            ))}
 
-      {/* Team Grid */}
-      <div className="px-8 md:px-16 lg:px-24 pb-24">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {teamMembers.map((member, i) => (
+            {/* Professionals Count Card */}
             <motion.div
-              key={member.name}
-              className="group relative border border-white/15 bg-white/5 p-8 hover:border-white/30 hover:bg-white/8 transition-all duration-300 rounded-sm overflow-hidden"
+              className="team-card"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.6, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.6, delay: teamMembers.length * 0.05, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -6 }}
             >
-              {/* Avatar Circle */}
-              <div className="mb-6 flex items-center justify-center w-40 h-40 mx-auto rounded-full bg-gradient-to-br from-white/20 to-white/5 border border-white/10 group-hover:border-white/20 transition-colors duration-300 overflow-hidden shadow-lg">
-                {member.image ? (
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <span className="text-6xl font-bold text-white/40 group-hover:text-white/60 transition-colors duration-300">
-                    {member.name.charAt(0)}
-                  </span>
-                )}
-              </div>
-
-              {/* Content */}
-              <h3
-                className="text-white text-center mb-2"
-                style={{ fontSize: "1.15rem", fontWeight: 600, letterSpacing: "-0.01em" }}
+              <motion.div
+                className="text-5xl mb-4 text-center"
+                whileHover={{ rotate: 15, scale: 1.15 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-                {member.name}
-              </h3>
-
-              <p
-                className="text-white/60 text-center mb-4"
-                style={{ fontSize: "0.9rem", fontWeight: 500 }}
-              >
-                {member.role}
-              </p>
-
-              <div className="mb-4 flex justify-center">
-                <span
-                  className="text-white/30 text-xs px-3 py-1 border border-white/15 rounded-full"
-                  style={{ fontSize: "0.65rem", letterSpacing: "0.1em" }}
-                >
-                  {member.expertise}
-                </span>
+                👥
+              </motion.div>
+              <div className="team-card-content text-center">
+                <h3>9+ Professionals</h3>
+                <div className="team-card-role">Skilled Specialists</div>
+                <div className="flex justify-center mb-3">
+                  <span className="team-card-expertise">Expanding Team</span>
+                </div>
+                <p className="team-card-bio">Dedicated experts across manufacturing, engineering, and operations working together to deliver excellence.</p>
               </div>
-
-              <p className="text-white/40 text-center" style={{ fontSize: "0.85rem", lineHeight: 1.6 }}>
-                {member.bio}
-              </p>
-
-              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-white/0 via-white/20 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="team-card-line" />
             </motion.div>
-          ))}
+          </div>
         </div>
-      </div>
 
-      {/* Join Us Section */}
-      <div className="px-8 md:px-16 lg:px-24 pb-24">
-        <motion.div
-          className="relative border border-white/15 bg-white/5 p-12 rounded-sm text-center overflow-hidden"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="text-white mb-4" style={{ fontSize: "1.8rem", fontWeight: 600 }}>
-            Join Our Team
-          </h2>
-          <p className="text-white/50 mb-8 max-w-2xl mx-auto" style={{ fontSize: "1rem", lineHeight: 1.7 }}>
-            We're always looking for talented professionals to join our growing team. If you're passionate about precision manufacturing and innovation, we'd love to hear from you.
-          </p>
-          <button
-            className="px-8 py-3.5 border border-white/20 text-white/70 hover:border-white/50 hover:text-white transition-all duration-300 hover:scale-105 cursor-pointer bg-transparent"
-            style={{ fontSize: "0.8rem", letterSpacing: "0.06em" }}
+        {/* Join Us Section */}
+        <div className="team-grid-wrapper">
+          <motion.div
+            className="team-card text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
-            View Careers
-          </button>
-
-          <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-white/0 via-white/20 to-white/0 opacity-0 group-hover:opacity-100" />
-        </motion.div>
+            <h2 className="text-white mb-4" style={{ fontSize: "1.8rem", fontWeight: 600 }}>
+              Join Our Team
+            </h2>
+            <p className="text-white/50 mb-8 max-w-2xl mx-auto" style={{ fontSize: "1rem", lineHeight: 1.7 }}>
+              We're always looking for talented professionals to join our growing team. If you're passionate about precision manufacturing and innovation, we'd love to hear from you.
+            </p>
+            <motion.button
+              className="px-8 py-3.5 border border-crimson-soft text-crimson-bright hover:border-crimson-bright hover:text-white transition-all duration-300 cursor-pointer bg-transparent rounded"
+              style={{ fontSize: "0.8rem", letterSpacing: "0.06em", fontWeight: 600 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              View Careers
+            </motion.button>
+            <div className="team-card-line" />
+          </motion.div>
+        </div>
       </div>
     </div>
   );
