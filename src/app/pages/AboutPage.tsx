@@ -168,17 +168,17 @@ body {
 
 /* ---- Scene 1 ---- */
 #scene1 .big {
-  font-size: clamp(2.2rem, 8vw, 6rem);
-  max-width: 95vw;
-  word-spacing: 0.2em;
-  letter-spacing: 0.05em;
+  font-size: clamp(1.5rem, 7vw, 4.5rem);
+  max-width: 90vw;
+  word-spacing: 0.1em;
+  letter-spacing: 0.02em;
   display: block;
-  width: 100%;
+  width: auto;
   background: none;
   color: #d32f2f;
   -webkit-background-clip: unset;
   background-clip: unset;
-  white-space: nowrap;
+  overflow-wrap: break-word;
 }
 .scene.active .reveal-1 { animation: revealUp var(--scene-dur) cubic-bezier(.16,1,.3,1) both; }
 .scene.active .reveal-2 { animation: revealUp var(--scene-dur) cubic-bezier(.16,1,.3,1) 0.25s both; }
