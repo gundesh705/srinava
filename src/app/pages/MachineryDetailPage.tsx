@@ -27,7 +27,7 @@ const machines = [
     subEquipment: [
       {
         name: "Hydraulic Press Brake",
-        img: "https://cdn.builder.io/api/v1/image/assets%2F6081257f56164f79a999356618a191cf%2F3eb2fd70be9041b9acf5ec5641c4db7f?format=webp&width=800&height=1200",
+        img: "https://cdn.builder.io/api/v1/image/assets%2Ffc9c51b5c7bb434bb02302d7c203af2b%2Fdb2d1657f4324690ab71fa472cb52302?format=webp&width=800&height=1200",
         desc: "Our CNC Hydraulic Press Brake is designed for high-precision sheet metal bending and forming operations. With the capability to bend mild steel sheets up to 8 mm thickness, the machine delivers exceptional accuracy, repeatability, and productivity. Equipped with a CNC control system and heavy-duty hydraulic drive, it enables the fabrication of complex profiles, industrial enclosures, structural components, tanks, and custom sheet metal products.",
       },
       {
