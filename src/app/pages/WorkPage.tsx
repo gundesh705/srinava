@@ -161,10 +161,10 @@ export function WorkPage() {
           transition={{ duration: 0.6 }}
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-8 h-px bg-white/40" />
+            <div className="w-8 h-px bg-red-500/60" />
             <span
-              className="text-white/40 uppercase"
-              style={{ fontSize: "0.7rem", letterSpacing: "0.25em", fontWeight: 500 }}
+              className="text-red-500/80 uppercase"
+              style={{ fontSize: "0.7rem", letterSpacing: "0.25em", fontWeight: 600 }}
             >
               Equipment & Technology
             </span>
@@ -177,6 +177,10 @@ export function WorkPage() {
               fontWeight: 700,
               letterSpacing: "-0.02em",
               lineHeight: 1.1,
+              background: "linear-gradient(135deg, #ffffff 0%, #ffffff 60%, #ff3340 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              backgroundClip: "text",
             }}
           >
             Our Machinery
@@ -187,7 +191,7 @@ export function WorkPage() {
           {machines.map((m, i) => (
             <motion.div
               key={m.name}
-              className="group relative border border-white/15 bg-white/5 p-8 hover:border-red-500/40 hover:bg-white/8 transition-all duration-300 cursor-pointer overflow-hidden rounded-sm"
+              className="group relative border border-red-500/20 bg-gradient-to-br from-red-500/5 to-red-500/0 p-8 hover:border-red-500/60 hover:bg-red-500/8 hover:shadow-lg hover:shadow-red-500/10 transition-all duration-300 cursor-pointer overflow-hidden rounded-sm"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
@@ -196,7 +200,7 @@ export function WorkPage() {
               style={{ minHeight: "200px", display: "flex", flexDirection: "column", justifyContent: "center" }}
             >
               <div
-                className="text-white/30 mb-6 group-hover:text-red-400/70 transition-colors duration-300"
+                className="text-red-500/40 mb-6 group-hover:text-red-400 transition-colors duration-300"
                 style={{ fontSize: "2.5rem" }}
               >
                 {m.icon}
@@ -209,7 +213,7 @@ export function WorkPage() {
                 {m.name}
               </h3>
 
-              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-red-500/0 via-red-500/30 to-red-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-red-500/0 via-red-500/60 to-red-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </motion.div>
           ))}
         </div>
