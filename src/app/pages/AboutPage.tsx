@@ -910,7 +910,7 @@ export function AboutPage() {
               gap: 0.75rem;
               transition: all 0.3s ease;
               padding: 0.4rem 0;
-              text-align: left;
+              text-align: justify;
             }
 
             .expertise-category:hover .expertise-item {
