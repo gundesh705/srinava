@@ -201,6 +201,8 @@ export function TeamPage() {
           padding: clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 4vw, 3rem) clamp(4rem, 8vw, 7rem);
           max-width: 1280px;
           margin: 0 auto;
+          display: flex;
+          justify-content: center;
         }
 
         .team-card {
