@@ -151,6 +151,7 @@ body {
   font-weight: 400;
   letter-spacing: 0.4px;
   max-width: 560px;
+  text-align: justify;
 }
 
 /* reveal helpers */
