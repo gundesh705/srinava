@@ -674,7 +674,7 @@ export function ContactPage() {
                     ) : item.link ? (
                       <a
                         href={item.link}
-                        target={item.label === "Website" ? "_blank" : undefined}
+                        target={item.label === "Instagram" ? "_blank" : undefined}
                         rel="noopener noreferrer"
                       >
                         {item.value}
