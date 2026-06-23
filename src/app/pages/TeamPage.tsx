@@ -154,14 +154,18 @@ export function TeamPage() {
 
         .team-header {
           padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 4vw, 3rem) clamp(1.5rem, 4vw, 2.5rem);
-          text-align: left;
+          text-align: center;
           max-width: 1280px;
           margin: 0 auto;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
         }
 
         .eyebrow {
-          display: inline-flex;
+          display: flex;
           align-items: center;
+          justify-content: center;
           gap: 0.7rem;
           font-size: 0.72rem;
           letter-spacing: 0.3em;
@@ -195,6 +199,8 @@ export function TeamPage() {
           color: var(--text-dim);
           line-height: 1.75;
           max-width: 640px;
+          margin: 0 auto;
+          text-align: center;
         }
 
         .team-grid-wrapper {
