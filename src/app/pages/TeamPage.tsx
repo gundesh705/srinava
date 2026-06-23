@@ -7,7 +7,7 @@ const teamMembers = [
     role: "Founder",
     expertise: "Strategic Vision & Leadership",
     bio: "Visionary founder who established Sri Nava Industries in 1985, building a legacy of excellence in fabrication and engineering.",
-    image: null,
+    image: "https://cdn.builder.io/api/v1/image/assets%2F8d59509cf87341108edce9d018bc2251%2F00069108c25d40428305c9e6076ac7a4?format=webp&width=800&height=1200",
   },
   {
     name: "Vijayalakshmi Bhuvanendran",
