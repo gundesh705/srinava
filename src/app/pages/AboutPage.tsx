@@ -1148,10 +1148,7 @@ export function AboutPage() {
                     <p
   className="industry-name"
   style={{
-    textAlign:
-      industry === "Heavy Engineering & Fabrication"
-        ? "left"
-        : "justify",
+    textAlign: "justify",
   }}
 >
   {industry}
