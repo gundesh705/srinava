@@ -74,7 +74,7 @@ export function ContactPage() {
   const stats = [
     { value: "15+", label: "Years of Service" },
     { value: "500+", label: "Projects Delivered" },
-    { value: "24/7", label: "Support Response" },
+    { value: "100+", label: "Companies Served" },
   ];
 
   return (
